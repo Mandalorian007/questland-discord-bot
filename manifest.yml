@@ -1,0 +1,4 @@
+applications:
+  - name: questland-discord-bot
+    command: node questland-bot.js
+    buildpack: https://github.com/cloudfoundry/nodejs-buildpack
