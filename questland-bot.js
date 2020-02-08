@@ -71,8 +71,7 @@ client.on("message", async message => {
 
     const res = await fetch(
       'https://questland-public-api.cfapps.io/items/name/' + encodeURIComponent(itemName));
-    const items = await res.json();
-    const m = await message.channel.send(printItem(items));
+    await message.channel.send(printItem(res.json()));
   }
 });
 
