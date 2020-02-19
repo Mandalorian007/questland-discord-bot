@@ -56,7 +56,6 @@ client.on("message", async message => {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
-
   if (command === "ping") {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
     // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
@@ -123,8 +122,27 @@ client.on("message", async message => {
           });
       }
     }
+  }
 
+  if (command === "orb") {
+    // Prints details about a specific questland orb by leveraging the public api
 
+    let orbName = args.join(" ");
+    console.log(`Resolving details for orb: ` + orbName);
+
+    let url = 'https://questland-public-api.cfapps.io/orbs/name/'
+      + encodeURIComponent(orbName);
+    fetch(url)
+      .then((response) => {
+        if (response.ok) {
+          response.json().then(orbJson => {
+            let orbPrint = printOrb(orbJson);
+            message.channel.send(orbPrint);
+          });
+        } else {
+          message.channel.send('Unable to locate orb.');
+        }
+      });
   }
 });
 
@@ -156,6 +174,27 @@ const printItem = (item) => {
     console.error(e);
     return 'Unable to locate item.'
   }
+};
+
+const printOrb = (orb) => {
+  try {
+    return orb.name
+      + '\nPotential (atk, mag, def, hp): '
+      + orb.attackPotential
+      + ', ' + orb.magicPotential
+      + ', ' + orb.defensePotential
+      + ', ' + orb.healthPotential
+      + '\nQuality: ' + orb.quality
+      + '\nStats (atk, mag, def, hp): ' + orb.attack
+      + ', ' + orb.magic
+      + ', ' + orb.defense
+      + ', ' + orb.health;
+
+  } catch (e) {
+    console.error(e);
+    return 'Unable to locate orb.'
+  }
+
 };
 
 client.login(config.token);
