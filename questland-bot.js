@@ -130,7 +130,7 @@ client.on("message", async message => {
 
 const printItem = (item) => {
   try {
-    return item.name
+    itemToPrint = item.name
       + '\nPotential (atk, mag, def, hp): ' + item.totalPotential
       + ' (' + item.attackPotential
       + ', ' + item.magicPotential
@@ -144,6 +144,14 @@ const printItem = (item) => {
       + ', ' + item.magic
       + ', ' + item.defense
       + ', ' + item.health;
+
+    if (item.passive1Name) {
+      itemToPrint = itemToPrint + "\nItem Passives:\n"
+        + item.passive1Name + ": " + item.passive1Description
+        + "\n" + item.passive2Name + ": " + item.passive2Description
+    }
+
+    return itemToPrint;
   } catch (e) {
     console.error(e);
     return 'Unable to locate item.'
