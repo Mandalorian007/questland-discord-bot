@@ -1,6 +1,8 @@
 const connect = require('connect');
 const serveStatic = require('serve-static');
 const fetch = require("node-fetch");
+const {itemCommand} = require("./item-command");
+const {orbCommand} = require("./orb-command");
 
 // Host a static file for health checks
 connect().use(serveStatic(__dirname)).listen(process.env.PORT || 3000, function () {
@@ -64,137 +66,14 @@ client.on("message", async message => {
   }
 
   if (command === "item") {
-    // Prints details about a specific questland item by leveraging the public api
-
-    // extract any flags in args
-    let flags = [];
-    args.forEach(arg => {
-      if (arg.startsWith('-')) {
-        flags.push(arg);
-      }
-    });
-
-    // filter flags from args
-    const cleanArgs = args.filter((arg) => !flags.includes(arg));
-
-    if (flags.length >1) {
-      await message.channel.send('Too many flags.');
-    } else {
-      const itemName = cleanArgs.join(" ");
-      console.log(`Resolving details for item: ` + itemName);
-
-      let param = '';
-      if (flags.length === 1) {
-        switch (flags[0].toUpperCase()) {
-          case '-ARTIFACT1':
-            param = '?quality=ARTIFACT1';
-            break;
-          case '-ARTIFACT2':
-            param = '?quality=ARTIFACT2';
-            break;
-          case '-ARTIFACT3':
-            param = '?quality=ARTIFACT3';
-            break;
-          case '-ARTIFACT4':
-            param = '?quality=ARTIFACT4';
-            break;
-          default:
-            param = 'bad';
-        }
-      }
-
-      if (param === 'bad') {
-        await message.channel.send('invalid parameter');
-      } else {
-        let url = 'https://questland-public-api.cfapps.io/items/name/'
-          + encodeURIComponent(itemName)
-          + param;
-        fetch(url)
-          .then((response) => {
-            if (response.ok) {
-              response.json().then(itemJson => {
-                let itemPrint = printItem(itemJson);
-                message.channel.send(itemPrint);
-              });
-            } else {
-              message.channel.send('Unable to locate item.');
-            }
-          });
-      }
-    }
+    const itemResponse = await itemCommand(args);
+    await message.channel.send(itemResponse);
   }
 
   if (command === "orb") {
-    // Prints details about a specific questland orb by leveraging the public api
-
-    let orbName = args.join(" ");
-    console.log(`Resolving details for orb: ` + orbName);
-
-    let url = 'https://questland-public-api.cfapps.io/orbs/name/'
-      + encodeURIComponent(orbName);
-    fetch(url)
-      .then((response) => {
-        if (response.ok) {
-          response.json().then(orbJson => {
-            let orbPrint = printOrb(orbJson);
-            message.channel.send(orbPrint);
-          });
-        } else {
-          message.channel.send('Unable to locate orb.');
-        }
-      });
+    const orbResponse = await orbCommand(args);
+    await message.channel.send(orbResponse);
   }
 });
-
-const printItem = (item) => {
-  try {
-    itemToPrint = item.name
-      + '\nPotential (atk, mag, def, hp): ' + item.totalPotential
-      + ' (' + item.attackPotential
-      + ', ' + item.magicPotential
-      + ', ' + item.defensePotential
-      + ', ' + item.healthPotential + ')'
-      + '\nQuality: ' + item.quality
-      + '\nEmblem: ' + item.emblem
-      + '\nItem Slot: ' + item.itemSlot
-      + '\nStats (atk, mag, def, hp): '
-      + item.attack
-      + ', ' + item.magic
-      + ', ' + item.defense
-      + ', ' + item.health;
-
-    if (item.passive1Name) {
-      itemToPrint = itemToPrint + "\nItem Passives:\n"
-        + item.passive1Name + ": " + item.passive1Description
-        + "\n" + item.passive2Name + ": " + item.passive2Description
-    }
-
-    return itemToPrint;
-  } catch (e) {
-    console.error(e);
-    return 'Unable to locate item.'
-  }
-};
-
-const printOrb = (orb) => {
-  try {
-    return orb.name
-      + '\nPotential (atk, mag, def, hp): '
-      + orb.attackPotential
-      + ', ' + orb.magicPotential
-      + ', ' + orb.defensePotential
-      + ', ' + orb.healthPotential
-      + '\nQuality: ' + orb.quality
-      + '\nStats (atk, mag, def, hp): ' + orb.attack
-      + ', ' + orb.magic
-      + ', ' + orb.defense
-      + ', ' + orb.health;
-
-  } catch (e) {
-    console.error(e);
-    return 'Unable to locate orb.'
-  }
-
-};
 
 client.login(config.token);
