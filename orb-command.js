@@ -12,7 +12,7 @@ const orbYarg = yargs
   .version(false);
 
 const orbYargsParsePromise = (args) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     orbYarg.parse(args, (err, argv, output) => {
       // Not failing on an error
       resolve({ err, argv, output })

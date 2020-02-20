@@ -18,7 +18,7 @@ const itemYarg = yargs
   });
 
 const itemYargsParsePromise = (args) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     itemYarg.parse(args, (err, argv, output) => {
       // Not failing on an error
       resolve({ err, argv, output })
