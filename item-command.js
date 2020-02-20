@@ -1,5 +1,6 @@
 const yargs = require("yargs");
 const fetch = require("node-fetch");
+const Discord = require("discord.js");
 
 const itemYarg = yargs
   .scriptName("!ql")
@@ -20,7 +21,7 @@ const itemYargsParsePromise = (args) => {
   return new Promise((resolve, reject) => {
     itemYarg.parse(args, (err, argv, output) => {
       // Not failing on an error
-      resolve({err, argv, output})
+      resolve({ err, argv, output })
     })
   })
 };
@@ -42,7 +43,7 @@ exports.itemCommand = async (args) => {
 
     let param = '';
     if (argv.a) {
-      param = `?quality=ARTIFACT${argv.a}`;
+      param = `?quality=ARTIFACT${ argv.a }`;
     }
 
     let url = 'https://questland-public-api.cfapps.io/items/name/'
@@ -55,30 +56,35 @@ exports.itemCommand = async (args) => {
 
 const printItem = (item) => {
   try {
-    let itemToPrint = item.name
-      + '\nPotential (atk, mag, def, hp): ' + item.totalPotential
-      + ' (' + item.attackPotential
-      + ', ' + item.magicPotential
-      + ', ' + item.defensePotential
-      + ', ' + item.healthPotential + ')'
-      + '\nQuality: ' + item.quality
-      + '\nEmblem: ' + item.emblem
-      + '\nItem Slot: ' + item.itemSlot
-      + '\nStats (atk, mag, def, hp): '
-      + item.attack
-      + ', ' + item.magic
-      + ', ' + item.defense
-      + ', ' + item.health;
+    let embed = new Discord.RichEmbed()
+      .setTitle(`${ item.name }`)
+      .addField('Potential (atk, mag, def, hp)',
+        '' + item.totalPotential
+        + ' (' + item.attackPotential
+        + ', ' + item.magicPotential
+        + ', ' + item.defensePotential
+        + ', ' + item.healthPotential + ')',
+        false)
+      .addField('Quality', item.quality, false)
+      .addField('Emblem', item.emblem, false)
+      .addField('Item Slot', item.itemSlot, false)
+      .addField('Stats (atk, mag, def, hp)',
+        '' + item.attack
+        + ', ' + item.magic
+        + ', ' + item.defense
+        + ', ' + item.health,
+        false);
 
     if (item.passive1Name) {
-      itemToPrint = itemToPrint + "\nItem Passives:\n"
-        + item.passive1Name + ": " + item.passive1Description
-        + "\n" + item.passive2Name + ": " + item.passive2Description
+      embed.addField('Item Passive 1',
+        item.passive1Name + ": " + item.passive1Description, false)
+      embed.addField('Item Passive 2',
+        item.passive2Name + ": " + item.passive2Description, false)
     }
 
-    return itemToPrint;
+    return { embed };
   } catch (e) {
-    console.error('Failed to format item data', e);
-    return 'Failed to format item data :('
+    console.error(e);
+    return 'Unable to locate orb.'
   }
 };
