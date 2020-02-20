@@ -1,5 +1,6 @@
 const yargs = require("yargs");
 const fetch = require("node-fetch");
+const Discord = require("discord.js");
 
 const orbYarg = yargs
   .scriptName("!ql")
@@ -14,7 +15,7 @@ const orbYargsParsePromise = (args) => {
   return new Promise((resolve, reject) => {
     orbYarg.parse(args, (err, argv, output) => {
       // Not failing on an error
-      resolve({err, argv, output})
+      resolve({ err, argv, output })
     })
   })
 };
@@ -43,18 +44,23 @@ exports.orbCommand = async (args) => {
 
 const printOrb = (orb) => {
   try {
-    return orb.name
-      + '\nPotential (atk, mag, def, hp): '
-      + orb.attackPotential
-      + ', ' + orb.magicPotential
-      + ', ' + orb.defensePotential
-      + ', ' + orb.healthPotential
-      + '\nQuality: ' + orb.quality
-      + '\nStats (atk, mag, def, hp): ' + orb.attack
-      + ', ' + orb.magic
-      + ', ' + orb.defense
-      + ', ' + orb.health;
+    const embed = new Discord.RichEmbed()
+      .setTitle(`${ orb.name }`)
+      .addField('Potential (atk, mag, def, hp)',
+        '' + orb.attackPotential
+        + ', ' + orb.magicPotential
+        + ', ' + orb.defensePotential
+        + ', ' + orb.healthPotential,
+        false)
+      .addField('Quality', orb.quality, false)
+      .addField('Stats (atk, mag, def, hp)',
+        '' + orb.attack
+        + ', ' + orb.magic
+        + ', ' + orb.defense
+        + ', ' + orb.health,
+        false);
 
+    return { embed };
   } catch (e) {
     console.error(e);
     return 'Unable to locate orb.'

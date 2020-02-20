@@ -1,16 +1,13 @@
 const connect = require('connect');
 const serveStatic = require('serve-static');
-const fetch = require("node-fetch");
 const {itemCommand} = require("./item-command");
 const {orbCommand} = require("./orb-command");
+const Discord = require("discord.js");
 
 // Host a static file for health checks
 connect().use(serveStatic(__dirname)).listen(process.env.PORT || 3000, function () {
   console.log('Server running on 8080...');
 });
-
-
-const Discord = require("discord.js");
 
 const client = new Discord.Client();
 
