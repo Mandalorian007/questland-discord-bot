@@ -1,13 +1,7 @@
 const connect = require('connect');
 const serveStatic = require('serve-static');
-const {itemCommand} = require("./item-command");
-const {orbCommand} = require("./orb-command");
+const yargs = require('yargs');
 const Discord = require("discord.js");
-
-// Host a static file for health checks
-connect().use(serveStatic(__dirname)).listen(process.env.PORT || 3000, function () {
-  console.log('Server running on 8080...');
-});
 
 const client = new Discord.Client();
 
@@ -15,6 +9,21 @@ const client = new Discord.Client();
 const config = require("./config.json");
 // config.token contains the bot's token
 // config.prefix contains the message prefix.
+
+const parser = yargs
+  .scriptName(config.prefix)
+  .usage('$0 [command] [options]')
+  .commandDir('commands')
+  .demandCommand(1)
+  .help()
+  .alias('h', 'help')
+  .showHelpOnFail(true)
+  .version(false);
+
+// Host a static file for health checks
+connect().use(serveStatic(__dirname)).listen(process.env.PORT || 3000, function () {
+  console.log('Server running on 8080...');
+});
 
 client.on("ready", () => {
   // This event will run if the bot starts, and logs in, successfully.
@@ -52,6 +61,7 @@ client.on("message", async message => {
   // e.g. if we have the message "+say Is this the real life?" , we'll get the following:
   // command = say
   // args = ["Is", "this", "the", "real", "life?"]
+  const originalArgs = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
@@ -60,16 +70,17 @@ client.on("message", async message => {
     // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latency is ${ m.createdTimestamp - message.createdTimestamp }ms. API Latency is ${ Math.round(client.ping) }ms`);
-  }
 
-  if (command === "item") {
-    const itemResponse = await itemCommand(args);
-    await message.channel.send(itemResponse);
-  }
+  } else {
 
-  if (command === "orb") {
-    const orbResponse = await orbCommand(args);
-    await message.channel.send(orbResponse);
+    parser.parse(originalArgs, async (err, argv, output) => {
+      if (argv.handled) {
+        const result = await argv.handled;
+        console.log('GOT A RESULT:\n', result);
+      } else {
+        console.log('THIS IS HELP:\n', output);
+      }
+    });
   }
 });
 
