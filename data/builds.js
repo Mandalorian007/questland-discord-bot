@@ -5,7 +5,8 @@ exports.dailyStandard = {
   talent1: 'Sword Wielding',
   talent2: 'Transcendental Tornado',
   talent3: 'Crest Guardian',
-  details: 'https://questlandblog.com/sibbs-daily-boss-guide-1/'
+  details: 'https://questlandblog.com/sibbs-daily-boss-guide-1/',
+  image: 'https://questlandblog.com/wp-content/uploads/2019/12/1.png'
 };
 
 exports.whiteBuster = {
@@ -15,7 +16,8 @@ exports.whiteBuster = {
   talent1: 'Berserker',
   talent2: 'any',
   talent3: 'Crest Guardian',
-  details: 'https://questlandblog.com/sibbs-daily-boss-guide-1/'
+  details: 'https://questlandblog.com/sibbs-daily-boss-guide-1/',
+  image: 'https://questlandblog.com/wp-content/uploads/2019/12/b2.png'
 };
 
 exports.intenseSwordWielding = {
@@ -25,17 +27,8 @@ exports.intenseSwordWielding = {
   talent1: 'Sword Wielding',
   talent2: 'Firebird',
   talent3: 'Crest Guardian',
-  details: 'https://questlandblog.com/sibbs-daily-boss-guide-2/'
-};
-
-exports.intenseSwordWielding = {
-  name: 'The Intense Sword Wielding',
-  weapon1: 'Hecatombus',
-  weapon2: `Azazel's Shield`,
-  talent1: 'Sword Wielding',
-  talent2: 'Firebird',
-  talent3: 'Crest Guardian',
-  details: 'https://questlandblog.com/sibbs-daily-boss-guide-2/'
+  details: 'https://questlandblog.com/sibbs-daily-boss-guide-2/',
+  image: 'https://questlandblog.com/wp-content/uploads/2020/01/B3.png'
 };
 
 exports.armouredBlaster = {
@@ -45,5 +38,6 @@ exports.armouredBlaster = {
   talent1: 'Inner Fire',
   talent2: 'Faerie Flame',
   talent3: 'Elevation',
-  details: 'https://questlandblog.com/sibbs-daily-boss-guide-2/'
+  details: 'https://questlandblog.com/sibbs-daily-boss-guide-2/',
+  image: 'https://questlandblog.com/wp-content/uploads/2020/01/b4.png'
 };

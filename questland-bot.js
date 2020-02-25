@@ -76,7 +76,7 @@ client.on("message", async message => {
     parser.parse(originalArgs, async (err, argv, output) => {
       if (argv.handled) {
         const result = await argv.handled;
-        await message.channel.send(result);
+        await message.channel.send(result).catch(console.error);
       } else {
         await message.channel.send(output);
       }

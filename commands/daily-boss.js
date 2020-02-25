@@ -74,7 +74,8 @@ const printBuild = (build) => {
       .addField('Weapons:', build.weapon1 + ', ' + build.weapon2, false)
       .addField('Talents:',
         build.talent1 + ', ' + build.talent2 + ', ' + build.talent3, false)
-      .setURL(build.details);
+      .setURL(build.details)
+      .setImage(build.image);
 
     return { embed };
   } catch (e) {
