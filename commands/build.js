@@ -27,7 +27,7 @@ Examples:
   !ql build Turtle     Get details for the Turtle build.
   
 Build Options:
-  Turtle, Hecatombus, Pax, RatchetRush
+  Turtle, Hecatombus, Pax, Ratchet Rush
 `
   }
 
@@ -48,7 +48,7 @@ const getBuild = (buildName) => {
       return theHecatombus;
     case 'pax':
       return thePax;
-    case 'ratchetrush':
+    case 'ratchet rush':
       return ratchetRush;
     default:
       return undefined;
@@ -62,7 +62,8 @@ const printBuild = (build) => {
       .addField('Weapons: ', build.weapons, false)
       .addField('Weapon alternatives: ', build.weaponAlternates, false)
       .addField('Talents:',
-        build.talent1 + ', ' + build.talent2 + ', ' + build.talent3, false);
+        build.talent1 + ', ' + build.talent2 + ', ' + build.talent3, false)
+      .setImage(build.image);
 
     return { embed };
   } catch (e) {
@@ -71,4 +72,4 @@ const printBuild = (build) => {
   }
 };
 
-const buildNameOptions = `  Turtle, Hecatombus, Pax, RatchetRush`;
+const buildNameOptions = `  Turtle, Hecatombus, Pax, Ratchet Rush`;

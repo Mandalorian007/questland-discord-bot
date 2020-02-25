@@ -6,7 +6,7 @@ exports.theHecatombus = {
   talent2: 'Transcendental Tornado',
   talent3: 'Crest Guardian',
   //details: 'TODO link to public site when it is ready',
-  //image: 'Host this image from public API server?'
+  image: 'https://questland-discord-bot.cfapps.io/turtle.jpg'
 };
 
 exports.turtle = {
@@ -17,7 +17,7 @@ exports.turtle = {
   talent2: 'Chilling Cold',
   talent3: 'Magic Thief',
   //details: 'TODO link to public site when it is ready',
-  //image: 'Host this image from public API server?'
+  image: 'https://questland-discord-bot.cfapps.io/hecatombus.jpg'
 };
 
 exports.thePax = {
@@ -28,7 +28,7 @@ exports.thePax = {
   talent2: 'Faerie Flame',
   talent3: 'Magic Thief',
   //details: 'TODO link to public site when it is ready',
-  //image: 'Host this image from public API server?'
+  image: 'https://questland-discord-bot.cfapps.io/pax.jpg'
 };
 
 exports.ratchetRush = {
@@ -39,5 +39,5 @@ exports.ratchetRush = {
   talent2: 'Faerie Flame',
   talent3: 'Elevation',
   //details: 'TODO link to public site when it is ready',
-  //image: 'Host this image from public API server?'
+  image: 'https://questland-discord-bot.cfapps.io/ratchet-rush.jpg'
 };
