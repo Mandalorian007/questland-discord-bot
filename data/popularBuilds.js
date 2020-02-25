@@ -12,7 +12,7 @@ exports.theHecatombus = {
 exports.turtle = {
   name: 'The Turtle',
   weapons: 'Malachite Truncheon, Depth of Despair',
-  weaponAlternates: 'The Hulk, Thunderbash, Shadow Owl',
+  weaponAlternates: 'The Hulk, Thunderbash, Shadow Owl, Hunger of the Dead',
   talent1: 'Inner Fire',
   talent2: 'Chilling Cold',
   talent3: 'Magic Thief',
@@ -23,7 +23,7 @@ exports.turtle = {
 exports.thePax = {
   name: 'The PAX',
   weapons: 'The Pax, Depth of Despair',
-  weaponAlternates: 'Fang of the Naga, Thunderbash, Shadow Owl',
+  weaponAlternates: 'Fang of the Naga, Thunderbash, Shadow Owl, Hunger of the Dead',
   talent1: 'Fist of Frenzy',
   talent2: 'Faerie Flame',
   talent3: 'Magic Thief',
