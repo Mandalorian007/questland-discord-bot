@@ -6,7 +6,7 @@ exports.theHecatombus = {
   talent2: 'Transcendental Tornado',
   talent3: 'Crest Guardian',
   //details: 'TODO link to public site when it is ready',
-  image: 'https://questland-discord-bot.cfapps.io/turtle.jpg'
+  image: 'https://questland-discord-bot.cfapps.io/hecatombus.jpg'
 };
 
 exports.turtle = {
@@ -17,7 +17,7 @@ exports.turtle = {
   talent2: 'Chilling Cold',
   talent3: 'Magic Thief',
   //details: 'TODO link to public site when it is ready',
-  image: 'https://questland-discord-bot.cfapps.io/hecatombus.jpg'
+  image: 'https://questland-discord-bot.cfapps.io/turtle.jpg'
 };
 
 exports.thePax = {
