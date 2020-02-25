@@ -5,6 +5,11 @@ const Discord = require("discord.js");
 
 const client = new Discord.Client();
 
+// Host a static file for health checks
+connect().use(serveStatic(__dirname)).listen(process.env.PORT || 3000, function () {
+  console.log('Server running on 8080...');
+});
+
 // Here we load the config.json file that contains our token and our prefix values.
 const config = require("./config.json");
 // config.token contains the bot's token
