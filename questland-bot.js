@@ -15,8 +15,8 @@ const parser = yargs
   .usage('$0 [command] [options]')
   .commandDir('commands')
   .demandCommand(1)
-  .help()
-  .alias('h', 'help')
+  .help(false)
+  .showHelpOnFail(false)
   .showHelpOnFail(true)
   .version(false);
 
@@ -64,6 +64,8 @@ client.on("message", async message => {
   const originalArgs = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
+  console.log(originalArgs);
+  console.log(command);
 
   if (command === "ping") {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.

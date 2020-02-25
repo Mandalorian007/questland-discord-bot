@@ -12,9 +12,30 @@ exports.builder = (yargs) => {
       describe: 'Choose an artifact level',
       choices: [1, 2, 3, 4]
     })
+    .option('h', {
+      alias: 'help',
+      demandOption: false,
+      describe: 'Show Help'
+    })
 };
 
 exports.handler = asyncHandler(async (argv) => {
+  if (argv.h) {
+    return`Usage: !ql item <item name> [options]
+
+Commands:
+  !ql item  Get details about a Questland Item
+
+Options:
+  -a, --artifact  Choose an artifact level                 [choices: 1, 2, 3, 4]
+  -h, --help      Show help                                [boolean]
+
+Examples:
+  !ql item Hecatombus Get the details for Hecatombus at it's base level.
+  !ql item Hecatombus -a 4  Get the details for Hecatombus at Artifact level 4.
+`
+  }
+
   let temp = argv._;
   temp = temp.filter(x => x !== 'item');
   const itemName = temp.join(' ');

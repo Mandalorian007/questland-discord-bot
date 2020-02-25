@@ -4,9 +4,30 @@ const { asyncHandler } = require("./_helper");
 
 exports.command = 'orb';
 exports.describe = 'Get details about a Questland Orb';
-exports.builder = {};
+exports.builder = (yargs) => {
+  return yargs
+    .option('h', {
+      alias: 'help',
+      demandOption: false,
+      describe: 'Show Help'
+    })
+};
 
 exports.handler = asyncHandler(async (argv) => {
+  if (argv.h) {
+    return`Usage: !ql orb <orb name> [options]
+
+Commands:
+  !ql orb  Get details about a Questland Orb
+
+Options:
+  -h, --help      Show help                                [boolean]
+
+Examples:
+  !ql orb Behemoth Flames     Get the details for Behemoth Flames orb.
+`
+  }
+
   let temp = argv._;
   temp = temp.filter(x => x !== 'orb');
   const orbName = temp.join(' ');
