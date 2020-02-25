@@ -64,8 +64,6 @@ client.on("message", async message => {
   const originalArgs = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  console.log(originalArgs);
-  console.log(command);
 
   if (command === "ping") {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
@@ -78,9 +76,9 @@ client.on("message", async message => {
     parser.parse(originalArgs, async (err, argv, output) => {
       if (argv.handled) {
         const result = await argv.handled;
-        console.log('GOT A RESULT:\n', result);
+        await message.channel.send(result);
       } else {
-        console.log('THIS IS HELP:\n', output);
+        await message.channel.send(output);
       }
     });
   }
