@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const { asyncHandler } = require("./_helper");
-const { dailyStandard, whiteBuster, intenseSwordWielding, armouredBlaster } = require("./../data/builds");
+const { dailyStandard, whiteBuster, intenseSwordWielding, armouredBlaster } = require("./../data/dailyBuilds");
 
 exports.command = 'daily-boss';
 exports.describe = 'Get daily boss build';
@@ -24,7 +24,7 @@ Options:
   -h, --help      Show help                                [boolean]
 
 Examples:
-  !ql daily-boss Hierophant     Get SIBB's daily boss build to defeat the Hierophant
+  !ql daily-boss Hierophant     Get SIBB's daily boss build to defeat the Hierophant.
   
 Boss Options:
   Shaggy Ape, Rasayan, High Necropriest, Hierophant, Stygian, Ocotmage, Scorch,
@@ -39,7 +39,7 @@ Boss Options:
 
   const build = getBuild(bossName);
   return build ? printBuild(build) :
-    `Unable to locate a build for boss: ${bossName} \nDid you mean: \n` + bossNameOptions;
+    `Unable to locate a build for boss: ${bossName} \nBoss Options: \n` + bossNameOptions;
 });
 
 const getBuild = (bossName) => {
@@ -84,17 +84,6 @@ const printBuild = (build) => {
   }
 };
 
-const bossNameOptions = `Shaggy Ape
-Rasayan
-High Necropriest
-Hierophant
-Stygian
-Ocotmage
-Scorch
-Forest Spirit
-Reptilian Warrior
-Malachite Warrior
-Zuulaman
-Phantom Miner
-White Claw
-Bearbarian`;
+const bossNameOptions = `  Shaggy Ape, Rasayan, High Necropriest, Hierophant, Stygian, Ocotmage, Scorch,
+  Forest Spirit, Reptilian Warrior, Malachite Warrior, Zuulaman, Phantom Miner,
+  White Claw, Bearbarian`;

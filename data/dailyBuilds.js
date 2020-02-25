@@ -1,7 +1,7 @@
 exports.dailyStandard = {
   name: 'The Daily Standard',
   weapon1: 'Hecatombus',
-  weapon2: `Azazel's Shield`,
+  weapon2: 'Azazel Shield',
   talent1: 'Sword Wielding',
   talent2: 'Transcendental Tornado',
   talent3: 'Crest Guardian',
@@ -23,7 +23,7 @@ exports.whiteBuster = {
 exports.intenseSwordWielding = {
   name: 'The Intense Sword Wielding',
   weapon1: 'Hecatombus',
-  weapon2: `Azazel's Shield`,
+  weapon2: 'Azazel Shield',
   talent1: 'Sword Wielding',
   talent2: 'Firebird',
   talent3: 'Crest Guardian',
@@ -34,7 +34,7 @@ exports.intenseSwordWielding = {
 exports.armouredBlaster = {
   name: 'The Armoured Blaster',
   weapon1: 'Ratchet Hatchet',
-  weapon2: `Azazel's Shield`,
+  weapon2: 'Azazel Shield',
   talent1: 'Inner Fire',
   talent2: 'Faerie Flame',
   talent3: 'Elevation',

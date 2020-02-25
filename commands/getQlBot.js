@@ -22,7 +22,7 @@ Options:
   -h, --help      Show help                                [boolean]
 
 Examples:
-  !ql get-ql-bot     Get details about how to get QL Bot on your discord server
+  !ql get-ql-bot     Get details about how to get QL Bot on your discord server.
 `
   }
 
