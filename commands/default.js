@@ -18,6 +18,7 @@ Examples:
   !ql item Hecatombus         Get the details for Hecatombus at it's base level.
   !ql orb Behemoth Flames     Get the details for Behemoth Flames orb.
   !ql build Turtle            Get details for the Turtle build.
+  !ql daily-boss Today        Get SIBB's daily boss build for today's boss.
   !ql daily-boss Hierophant   Get SIBB's daily boss build to defeat the Hierophant.
   !ql get-ql-bot              Get details about how to get QL Bot on your discord server.
 `;
