@@ -23,7 +23,7 @@ exports.turtle = {
 exports.thePax = {
   name: 'The PAX',
   weapons: 'The Pax, Depth of Despair',
-  weaponAlternates: 'Fang of the Naga, Thunderbash, Shadow Owl, Hunger of the Dead',
+  weaponAlternates: 'Fang of the Naga, Ghost Monarch, Thunderbash, Shadow Owl, Hunger of the Dead',
   talent1: 'Fist of Frenzy',
   talent2: 'Faerie Flame',
   talent3: 'Magic Thief',
