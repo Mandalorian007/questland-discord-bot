@@ -47,8 +47,8 @@ exports.everlastingStriker = {
   name: 'The Everlasting Striker (SIBB Alternative)',
   weapon1: 'Hecatombus',
   weapon2: 'Azazel Shield',
+  talent1: 'Inner Fire',
   talent1: 'Faerie Flame',
-  talent2: 'Transcendental Tornado',
   talent3: 'Elevation',
   details: 'https://questlandblog.com/sibbs-daily-boss-guide-1/\'',
   image: 'https://questland-discord-bot.cfapps.io/ratchet-rush.jpg'
