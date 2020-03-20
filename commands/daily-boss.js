@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
 const { asyncHandler } = require("./_helper");
-const { dailyStandard, whiteBuster, intenseSwordWielding, armouredBlaster } = require("./../data/dailyBuilds");
+const { dailyStandard, whiteBuster, intenseSwordWielding, everlastingStriker } = require("./../data/dailyBuilds");
 
 exports.command = 'daily-boss';
 exports.describe = 'Get daily boss build';
@@ -16,7 +16,7 @@ exports.builder = (yargs) => {
 
 exports.handler = asyncHandler(async (argv) => {
   if (argv.h) {
-    return`Usage: !ql daily-boss <boss name> [options]
+    return `Usage: !ql daily-boss <boss name> [options]
 
 Commands:
   !ql daily-boss  Get SIBB's daily boss build
@@ -29,7 +29,7 @@ Examples:
   !ql daily-boss Hierophant     Get SIBB's daily boss build to defeat the Hierophant.
   
 Boss Options:
-  Today, Shaggy Ape, Rasayan, High Necropriest, Hierophant, Stygian, Ocotmage, Scorch,
+  Today, Shaggy Ape, Rasayan, High Necropriest, Hierophant, Stygian, Octomage, Scorch,
   Forest Spirit, Reptilian Warrior, Malachite Warrior, Zuulaman, Phantom Miner,
   White Claw, Bearbarian
 `
@@ -46,11 +46,11 @@ Boss Options:
 
   const build = getBuild(bossName.toLowerCase());
   return build ? printBuild(build, bossName) :
-    `Unable to locate a build for boss: ${bossName} \nBoss Options: \n` + bossNameOptions;
+    `Unable to locate a build for boss: ${ bossName } \nBoss Options: \n` + bossNameOptions;
 });
 
 const getBuild = (bossName) => {
-  switch(bossName) {
+  switch (bossName) {
     case 'shaggy ape':
     case 'rasayan':
     case 'high necropriest':
@@ -68,7 +68,7 @@ const getBuild = (bossName) => {
     case 'white claw':
       return intenseSwordWielding;
     case 'bearbarian':
-      return armouredBlaster;
+      return everlastingStriker;
     default:
       return undefined;
   }
