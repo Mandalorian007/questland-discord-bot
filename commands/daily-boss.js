@@ -56,7 +56,7 @@ const getBuild = (bossName) => {
     case 'high necropriest':
     case 'hierophant':
     case 'stygian':
-    case 'ocotmage':
+    case 'octomage':
     case 'scorch':
     case 'forest spirit':
     case 'reptilian warrior':
@@ -92,7 +92,7 @@ const printBuild = (build, bossName) => {
   }
 };
 
-const bossNameOptions = `  Today, Shaggy Ape, Rasayan, High Necropriest, Hierophant, Stygian, Ocotmage, Scorch,
+const bossNameOptions = `  Today, Shaggy Ape, Rasayan, High Necropriest, Hierophant, Stygian, Octomage, Scorch,
   Forest Spirit, Reptilian Warrior, Malachite Warrior, Zuulaman, Phantom Miner,
   White Claw, Bearbarian`;
 
