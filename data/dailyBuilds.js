@@ -50,6 +50,6 @@ exports.everlastingStriker = {
   talent1: 'Inner Fire',
   talent2: 'Faerie Flame',
   talent3: 'Elevation',
-  details: 'https://questlandblog.com/sibbs-daily-boss-guide-1/\'',
+  details: 'https://questlandblog.com/sibbs-daily-boss-guide-1/',
   image: 'https://questland-discord-bot.cfapps.io/everlasting-striker.png'
 };
