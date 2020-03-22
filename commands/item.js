@@ -1,8 +1,26 @@
 const fetch = require("node-fetch");
 const Discord = require("discord.js");
 const { asyncHandler } = require("./_helper");
+
+// thumbnails for messages
 const sherlockAttachment = new Discord.Attachment('./public/sherlock.png');
 const noideaAttachment = new Discord.Attachment('./public/noidea.png');
+
+// Discord message "multiple items found"
+const multipleResultsFoundMessage = (itemName, suggestions) =>
+  new Discord.RichEmbed()
+    .setTitle(`Multiple results for '${itemName}'`)
+    .addField('Did you mean:', `${suggestions}`)
+    .attachFile(sherlockAttachment)
+    .setThumbnail('attachment://sherlock.png');
+
+// Discord message "no item results found"
+const noResultFoundMessage = (itemName) =>
+  new Discord.RichEmbed()
+    .setTitle(`Item '${itemName}' not found`)
+    .addField('Please check your input', '\u200b')
+    .attachFile(noideaAttachment)
+    .setThumbnail('attachment://noidea.png');
 
 exports.command = 'item';
 exports.describe = 'Get details about a Questland Item';
@@ -42,23 +60,34 @@ Examples:
   temp = temp.filter(x => x !== 'item');
   let itemName = temp.join(' ');
 
-  let candidates = resolveItemName(itemName); // check item name against local static array 
-  if (Object.prototype.toString.call(candidates) === '[object Array]') { // only continue if resolveItemName returned an array
-    if (candidates.length == 1) { // unambiguous match, replace input
-      itemName = candidates[0]; 
+  // check item name against local static array. 
+  let candidates = matchItemName(itemName);
+
+  // only process further if matchItemName returned an array
+  if (Object.prototype.toString.call(candidates) === '[object Array]') {
+    if (candidates.length == 1) {
+      // unambiguous match, replace input (autocomplete)
+      itemName = candidates[0];
     }
-    else if (candidates.length > 1) { // multiple matches, suggest some candidates
+    else if (candidates.length > 1) {
+      // multiple matches, suggest some candidates
+      // prioritise items which start with the input term
+      candidates = candidates.sort((a, b) => a.toLowerCase().indexOf(itemName.toLowerCase())
+                                           - b.toLowerCase().indexOf(itemName.toLowerCase()))
+
+      // limit number of suggestions
       const maxCandidates = 5;
       let suggestions = candidates.slice(0, maxCandidates);
-      if (candidates.length > maxCandidates) 
+
+      // append ellipsis, if not all matches are shown as suggestions
+      if (suggestions.length < candidates.length)
         suggestions.push('...');
+
+      // create suggestions output
       suggestions = suggestions.join("\n");
-      let embed = new Discord.RichEmbed()
-        .setTitle(`Multiple results for '${itemName}'`)
-        .addField('Did you mean:', `${suggestions}`)
-        .attachFile(sherlockAttachment)
-        .setThumbnail('attachment://sherlock.png');
-      return { embed }; 
+
+      // just show suggestions, no API call
+      return multipleResultsFoundMessage(itemName, suggestions);
     }
   }
 
@@ -67,22 +96,22 @@ Examples:
     param = `?quality=ARTIFACT${argv.a}`;
   }
 
-  let url = 'https://questland-public-api.cfapps.io/items/name/'
+  const url = 'https://questland-public-api.cfapps.io/items/name/'
     + encodeURIComponent(itemName)
     + param;
   const response = await fetch(url);
-  return response.ok ? printItem(await response.json()) : new Discord.RichEmbed()
-    .setTitle(`Item '${itemName}' not found`)
-    .addField('Please check your input', '\u200b')
-    .attachFile(noideaAttachment)
-    .setThumbnail('attachment://noidea.png');
+  return response.ok ? printItem(await response.json()) : noResultFoundMessage(itemName);
 });
 
-/// match an item name against the static array of available item names
-const resolveItemName = (name) => {
+// match an item name against the static array of available item names
+// TODO: make dynamic, call API then cache results, or use local DB which gets periodically updated
+const matchItemName = (name) => {
   try {
-    let module = require('../data/itemNames.js');
-    let itemNames = module.itemNames;
+    // get static array of item names
+    const module = require('../data/itemNames.js');
+    const itemNames = module.itemNames;
+
+    // filter by name input
     return itemNames.filter(i => i.toLowerCase().includes(name.toLowerCase()));
   } catch (e) {
     console.error(e);
@@ -122,4 +151,4 @@ const printItem = (item) => {
     console.error(e);
     return 'Unable to format item data.';
   }
-};
+}
