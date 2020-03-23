@@ -1,8 +1,7 @@
 const fetch = require("node-fetch");
 const Discord = require("discord.js");
-const { asyncHandler } = require("./_helper");
-const { multipleResultsFoundMessage } = require("./_helper")
-const { noResultFoundMessage } = require("./_helper")
+const { asyncHandler } = require("./_helper")
+const { multipleResultsFoundMessage, noResultFoundMessage } = require("../helpers/messageHelper");
 
 
 exports.command = 'item';
@@ -56,7 +55,7 @@ Examples:
       // multiple matches, suggest some candidates
       // prioritise items which start with the input term
       candidates = candidates.sort((a, b) => a.toLowerCase().indexOf(itemName.toLowerCase())
-                                           - b.toLowerCase().indexOf(itemName.toLowerCase()))
+        - b.toLowerCase().indexOf(itemName.toLowerCase()))
 
       // limit number of suggestions
       const maxCandidates = 5;

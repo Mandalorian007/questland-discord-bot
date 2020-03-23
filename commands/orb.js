@@ -1,8 +1,8 @@
 const fetch = require("node-fetch");
 const Discord = require("discord.js");
-const { asyncHandler } = require("./_helper");
-const { multipleResultsFoundMessage } = require("./_helper")
-const { noResultFoundMessage } = require("./_helper")
+const { asyncHandler } = require("./_helper")
+const { multipleResultsFoundMessage, noResultFoundMessage } = require("../helpers/messageHelper");
+
 
 exports.command = 'orb';
 exports.describe = 'Get details about a Questland Orb';
