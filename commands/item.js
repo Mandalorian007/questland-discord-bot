@@ -1,26 +1,9 @@
 const fetch = require("node-fetch");
 const Discord = require("discord.js");
 const { asyncHandler } = require("./_helper");
+const { multipleResultsFoundMessage } = require("./_helper")
+const { noResultFoundMessage } = require("./_helper")
 
-// thumbnails for messages
-const sherlockAttachment = new Discord.Attachment('./public/sherlock.png');
-const noideaAttachment = new Discord.Attachment('./public/noidea.png');
-
-// Discord message "multiple items found"
-const multipleResultsFoundMessage = (itemName, suggestions) =>
-  new Discord.RichEmbed()
-    .setTitle(`Multiple results for '${itemName}'`)
-    .addField('Did you mean:', `${suggestions}`)
-    .attachFile(sherlockAttachment)
-    .setThumbnail('attachment://sherlock.png');
-
-// Discord message "no item results found"
-const noResultFoundMessage = (itemName) =>
-  new Discord.RichEmbed()
-    .setTitle(`Item '${itemName}' not found`)
-    .addField('Please check your input', '\u200b')
-    .attachFile(noideaAttachment)
-    .setThumbnail('attachment://noidea.png');
 
 exports.command = 'item';
 exports.describe = 'Get details about a Questland Item';
@@ -84,7 +67,7 @@ Examples:
         suggestions.push('...');
 
       // create suggestions output
-      suggestions = suggestions.join("\n");
+      suggestions = suggestions.join('\n');
 
       // just show suggestions, no API call
       return multipleResultsFoundMessage(itemName, suggestions);
@@ -100,7 +83,7 @@ Examples:
     + encodeURIComponent(itemName)
     + param;
   const response = await fetch(url);
-  return response.ok ? printItem(await response.json()) : noResultFoundMessage(itemName);
+  return response.ok ? printItem(await response.json()) : noResultFoundMessage(itemName, 'Item');
 });
 
 // match an item name against the static array of available item names
