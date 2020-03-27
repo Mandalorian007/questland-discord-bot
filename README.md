@@ -13,6 +13,7 @@ npm install discord.js
 npm install yargs
 npm install serve-static
 npm install connect
+npm install node-cache
 ```
 
 You will also need a config named `config.json` in the root directory of the project which isn't 

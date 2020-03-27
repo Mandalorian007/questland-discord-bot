@@ -2,7 +2,10 @@ const fetch = require("node-fetch");
 const Discord = require("discord.js");
 const { asyncHandler } = require("./_helper")
 const { multipleResultsFoundMessage, noResultFoundMessage } = require("../helpers/messageHelper");
+const { cacheService } = require("../helpers/cache");
 
+const ttl = 60 * 60; // cache for 1 Hour
+const cache = new cacheService(ttl);
 
 exports.command = 'orb';
 exports.describe = 'Get details about a Questland Orb';
@@ -36,7 +39,7 @@ Examples:
   let orbName = temp.join(' ');
 
   // check orb name against local static array. 
-  let candidates = matchOrbName(orbName);
+  let candidates = await matchOrbName(orbName);
 
   // only process further if matchorbName returned an array
   if (Object.prototype.toString.call(candidates) === '[object Array]') {
@@ -48,7 +51,7 @@ Examples:
       // multiple matches, suggest some candidates
       // prioritise orbs which start with the input term
       candidates = candidates.sort((a, b) => a.toLowerCase().indexOf(orbName.toLowerCase())
-                                           - b.toLowerCase().indexOf(orbName.toLowerCase()))
+                                           - b.toLowerCase().indexOf(orbName.toLowerCase()));
 
       // limit number of suggestions
       const maxCandidates = 5;
@@ -73,21 +76,27 @@ Examples:
   return response.ok ? printOrb(await response.json()) : noResultFoundMessage(orbName, 'Orb');
 });
 
-// match an orb name against the static array of available item names
-// TODO: make dynamic, call API then cache results, or use local DB which gets periodically updated
-const matchOrbName = (name) => {
-  try {
-    // get static array of item names
-    const module = require('../data/orbNames.js');
-    const orbNames = module.orbNames;
+// function for retrieving a list of orb names
+const loadOrbNames = async () => {
+  const orbListUrl = 'https://questland-public-api.cfapps.io/orbs';
+  const response = await fetch(orbListUrl);
+  const orbJson = await response.json();
+  return orbJson.map(orb => orb.name);
+};
 
+// match an item name against the public api data for available orbs
+const matchOrbName = async (name) => {
+  try {
+    // get an array of orb names
+    const orbNames = await cache.get('orbs', loadOrbNames);
     // filter by name input
     return orbNames.filter(i => i.toLowerCase().includes(name.toLowerCase()));
+
   } catch (e) {
     console.error(e);
     return 'Unable to resolve orb name.';
   }
-}
+};
 
 const printOrb = (orb) => {
   try {

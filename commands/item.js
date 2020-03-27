@@ -1,8 +1,11 @@
 const fetch = require("node-fetch");
 const Discord = require("discord.js");
-const { asyncHandler } = require("./_helper")
+const { asyncHandler } = require("./_helper");
 const { multipleResultsFoundMessage, noResultFoundMessage } = require("../helpers/messageHelper");
+const { cacheService } = require("../helpers/cache");
 
+const ttl = 60 * 60; // cache for 1 Hour
+const cache = new cacheService(ttl);
 
 exports.command = 'item';
 exports.describe = 'Get details about a Questland Item';
@@ -43,7 +46,7 @@ Examples:
   let itemName = temp.join(' ');
 
   // check item name against local static array. 
-  let candidates = matchItemName(itemName);
+  let candidates = await matchItemName(itemName);
 
   // only process further if matchItemName returned an array
   if (Object.prototype.toString.call(candidates) === '[object Array]') {
@@ -55,7 +58,7 @@ Examples:
       // multiple matches, suggest some candidates
       // prioritise items which start with the input term
       candidates = candidates.sort((a, b) => a.toLowerCase().indexOf(itemName.toLowerCase())
-        - b.toLowerCase().indexOf(itemName.toLowerCase()))
+        - b.toLowerCase().indexOf(itemName.toLowerCase()));
 
       // limit number of suggestions
       const maxCandidates = 5;
@@ -85,21 +88,27 @@ Examples:
   return response.ok ? printItem(await response.json()) : noResultFoundMessage(itemName, 'Item');
 });
 
-// match an item name against the static array of available item names
-// TODO: make dynamic, call API then cache results, or use local DB which gets periodically updated
-const matchItemName = (name) => {
-  try {
-    // get static array of item names
-    const module = require('../data/itemNames.js');
-    const itemNames = module.itemNames;
+// function for retrieving a list of item names
+const loadItemNames = async () => {
+  const itemListUrl = 'https://questland-public-api.cfapps.io/items?filterArtifacts=true';
+  const response = await fetch(itemListUrl);
+  const itemJson = await response.json();
+  return itemJson.map(item => item.name);
+};
 
+// match an item name against the public api data for available items
+const matchItemName = async (name) => {
+  try {
+    // get an array of item names
+    const itemNames = await cache.get('items', loadItemNames);
     // filter by name input
     return itemNames.filter(i => i.toLowerCase().includes(name.toLowerCase()));
+
   } catch (e) {
     console.error(e);
     return 'Unable to resolve item name.';
   }
-}
+};
 
 const printItem = (item) => {
   try {
@@ -133,4 +142,4 @@ const printItem = (item) => {
     console.error(e);
     return 'Unable to format item data.';
   }
-}
+};
