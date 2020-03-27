@@ -53,12 +53,14 @@ Examples:
     if (candidates.length == 1) {
       // unambiguous match, replace input (autocomplete)
       itemName = candidates[0];
-    }
-    else if (candidates.length > 1) {
+    } else if (candidates.length > 1) {
       // multiple matches, suggest some candidates
       // prioritise items which start with the input term
-      candidates = candidates.sort((a, b) => a.toLowerCase().indexOf(itemName.toLowerCase())
-        - b.toLowerCase().indexOf(itemName.toLowerCase()));
+      candidates = candidates
+        .sort()
+        .sort((a, b) =>
+          a.toLowerCase().indexOf(itemName.toLowerCase())
+          - b.toLowerCase().indexOf(itemName.toLowerCase()));
 
       // limit number of suggestions
       const maxCandidates = 5;
@@ -78,7 +80,7 @@ Examples:
 
   let param = '';
   if (argv.a) {
-    param = `?quality=ARTIFACT${argv.a}`;
+    param = `?quality=ARTIFACT${ argv.a }`;
   }
 
   const url = 'https://questland-public-api.cfapps.io/items/name/'
@@ -113,7 +115,7 @@ const matchItemName = async (name) => {
 const printItem = (item) => {
   try {
     let embed = new Discord.RichEmbed()
-      .setTitle(`${item.name}`)
+      .setTitle(`${ item.name }`)
       .addField('Potential (atk, mag, def, hp)',
         '' + item.totalPotential
         + ' (' + item.attackPotential

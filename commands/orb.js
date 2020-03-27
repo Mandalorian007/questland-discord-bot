@@ -20,7 +20,7 @@ exports.builder = (yargs) => {
 
 exports.handler = asyncHandler(async (argv) => {
   if (argv.h) {
-    return`Usage: !ql orb <orb name> [options]
+    return `Usage: !ql orb <orb name> [options]
 
 Commands:
   !ql orb  Get details about a Questland Orb
@@ -46,12 +46,14 @@ Examples:
     if (candidates.length == 1) {
       // unambiguous match, replace input (autocomplete)
       orbName = candidates[0];
-    }
-    else if (candidates.length > 1) {
+    } else if (candidates.length > 1) {
       // multiple matches, suggest some candidates
       // prioritise orbs which start with the input term
-      candidates = candidates.sort((a, b) => a.toLowerCase().indexOf(orbName.toLowerCase())
-                                           - b.toLowerCase().indexOf(orbName.toLowerCase()));
+      candidates = candidates
+        .sort()
+        .sort((a, b) =>
+          a.toLowerCase().indexOf(orbName.toLowerCase())
+          - b.toLowerCase().indexOf(orbName.toLowerCase()));
 
       // limit number of suggestions
       const maxCandidates = 5;
@@ -72,7 +74,7 @@ Examples:
   const url = 'https://questland-public-api.cfapps.io/orbs/name/'
     + encodeURIComponent(orbName);
   const response = await fetch(url);
-  
+
   return response.ok ? printOrb(await response.json()) : noResultFoundMessage(orbName, 'Orb');
 });
 
