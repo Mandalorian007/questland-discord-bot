@@ -11,24 +11,24 @@ exports.theHecatombus = {
 
 exports.turtle = {
   name: 'The Turtle',
-  weapons: 'Malachite Truncheon, Depth of Despair',
-  weaponAlternates: 'The Hulk, Thunderbash, Shadow Owl, Hunger of the Dead',
+  weapons: 'Malachite Truncheon, Winged Defender Shield',
+  weaponAlternates: 'The Hulk, Depth of Despair, Thunderbash, Shadow Owl, Hunger of the Dead',
   talent1: 'Inner Fire',
   talent2: 'Chilling Cold',
   talent3: 'Magic Thief',
   //details: 'TODO link to public site when it is ready',
-  image: 'https://questland-discord-bot.cfapps.io/turtle.jpg'
+  image: 'https://questland-discord-bot.cfapps.io/turtle.png'
 };
 
 exports.thePax = {
   name: 'The PAX',
-  weapons: 'The Pax, Depth of Despair',
-  weaponAlternates: 'Fang of Naga, Thunderbash, Shadow Owl, Hunger of the Dead',
+  weapons: 'The Pax, Winged Defender Shield',
+  weaponAlternates: 'Fang of Naga, Depth of Despair, Thunderbash, Shadow Owl, Hunger of the Dead',
   talent1: 'Fist of Frenzy',
   talent2: 'Faerie Flame',
   talent3: 'Magic Thief',
   //details: 'TODO link to public site when it is ready',
-  image: 'https://questland-discord-bot.cfapps.io/pax.jpg'
+  image: 'https://questland-discord-bot.cfapps.io/pax.png'
 };
 
 exports.ratchetRush = {
