@@ -12,7 +12,7 @@ exports.theHecatombus = {
 exports.turtle = {
   name: 'The Turtle',
   weapons: 'Malachite Truncheon, Winged Defender Shield',
-  weaponAlternates: 'The Hulk, Depth of Despair, Thunderbash, Shadow Owl, Hunger of the Dead',
+  weaponAlternates: 'The Hulk, Dracarion, Depth of Despair, Thunderbash, Shadow Owl, Hunger of the Dead',
   talent1: 'Inner Fire',
   talent2: 'Chilling Cold',
   talent3: 'Magic Thief',
