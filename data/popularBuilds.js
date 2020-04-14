@@ -34,7 +34,7 @@ exports.thePax = {
 exports.ratchetRush = {
   name: 'Ratchet Rush',
   weapons: 'Ratchet Hatchet, Azazel Shield',
-  weaponAlternates: 'Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
+  weaponAlternates: 'The Last Wish, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
   talent1: 'Inner Fire',
   talent2: 'Faerie Flame',
   talent3: 'Elevation',
