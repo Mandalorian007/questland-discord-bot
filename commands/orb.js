@@ -11,6 +11,12 @@ exports.command = 'orb';
 exports.describe = 'Get details about a Questland Orb';
 exports.builder = (yargs) => {
   return yargs
+    .option('a', {
+      alias: 'artifact',
+      demandOption: false,
+      describe: 'Choose an artifact level',
+      choices: [1]
+    })
     .option('h', {
       alias: 'help',
       demandOption: false,
@@ -26,14 +32,15 @@ Commands:
   !ql orb  Get details about a Questland Orb
 
 Options:
+  -a, --artifact  Choose an artifact level                 [choices: 1]
   -h, --help      Show help                                [boolean]
 
 Examples:
   !ql orb Behemoth Flames     Get the details for Behemoth Flames orb.
+  !ql orb Requiem -a 1 Get the details for Requem orb at Artifact level 1.
 `
   }
-
-
+    
   let temp = argv._;
   temp = temp.filter(x => x !== 'orb');
   let orbName = temp.join(' ');
@@ -71,8 +78,14 @@ Examples:
     }
   }
 
+  let param = '';
+  if (argv.a) {
+    param = `?quality=ARTIFACT${ argv.a }`;
+  }
+  
   const url = 'https://questland-public-api.cfapps.io/orbs/name/'
-    + encodeURIComponent(orbName);
+	+ encodeURIComponent(orbName)
+	+ param;
   const response = await fetch(url);
 
   return response.ok ? printOrb(await response.json()) : noResultFoundMessage(orbName, 'Orb');
@@ -80,7 +93,7 @@ Examples:
 
 // function for retrieving a list of orb names
 const loadOrbNames = async () => {
-  const orbListUrl = 'https://questland-public-api.cfapps.io/orbs';
+  const orbListUrl = 'https://questland-public-api.cfapps.io/orbs?filterArtifacts=true';
   const response = await fetch(orbListUrl);
   const orbJson = await response.json();
   return orbJson.map(orb => orb.name);
