@@ -103,7 +103,7 @@ const loadOrbNames = async () => {
 const matchOrbName = async (name) => {
   try {
     // get an array of orb names
-    const orbNames = new Set(await cache.get('orbs', loadOrbNames));
+    const orbNames = await cache.get('orbs', loadOrbNames);
     // filter by name input
     return orbNames.filter(i => i.toLowerCase().includes(name.toLowerCase()));
 
