@@ -5,7 +5,7 @@ exports.theHecatombus = {
   talent1: 'Bloodlust',
   talent2: 'Transcendental Tornado',
   talent3: 'Crest Guardian',
-  //details: 'TODO link to public site when it is ready',
+  details: 'https://www.youtube.com/watch?v=wu-9ES9aAZg',
   image: 'https://questland-discord-bot.cfapps.io/hecatombus.jpg'
 };
 
@@ -16,7 +16,7 @@ exports.turtle = {
   talent1: 'Inner Fire',
   talent2: 'Chilling Cold',
   talent3: 'Magic Thief',
-  //details: 'TODO link to public site when it is ready',
+  details: 'https://www.youtube.com/watch?v=cKGmy0tpDCo',
   image: 'https://questland-discord-bot.cfapps.io/turtle.png'
 };
 
@@ -27,7 +27,7 @@ exports.thePax = {
   talent1: 'Fist of Frenzy',
   talent2: 'Faerie Flame',
   talent3: 'Magic Thief',
-  //details: 'TODO link to public site when it is ready',
+  details: 'https://www.youtube.com/watch?v=3VZ55-NCUlo',
   image: 'https://questland-discord-bot.cfapps.io/pax.png'
 };
 
@@ -38,6 +38,6 @@ exports.ratchetRush = {
   talent1: 'Inner Fire',
   talent2: 'Faerie Flame',
   talent3: 'Elevation',
-  //details: 'TODO link to public site when it is ready',
+  details: 'https://www.youtube.com/watch?v=EnMpxvYR7L8',
   image: 'https://questland-discord-bot.cfapps.io/ratchet-rush.jpg'
 };
