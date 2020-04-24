@@ -7,6 +7,12 @@ exports.command = 'daily-boss';
 exports.describe = 'Get daily boss build';
 exports.builder = (yargs) => {
   return yargs
+    .option('s', {
+      alias: 'server',
+      demandOption: false,
+      describe: 'Choose a server for the today command.',
+      choices: ['global', 'america', 'europe', 'asia', 'veterans']
+    })
     .option('h', {
       alias: 'help',
       demandOption: false,
@@ -23,10 +29,11 @@ Commands:
 
 Options:
   -h, --help      Show help                                [boolean]
+  -s, --server    Select server for the Today option       [choices: 'global', 'europe', 'america', 'asia', 'veterans']
 
 Examples:
-  !ql daily-boss Today          Get SIBB's daily boss build for today's boss.
-  !ql daily-boss Hierophant     Get SIBB's daily boss build to defeat the Hierophant.
+  !ql daily-boss Today -s europe   Get SIBB's daily boss build for today's boss on the Europe server.
+  !ql daily-boss Hierophant        Get SIBB's daily boss build to defeat the Hierophant.
   
 Boss Options:
   Today, Shaggy Ape, Rasayan, High Necropriest, Hierophant, Stygian, Octomage, Scorch,
@@ -40,7 +47,12 @@ Boss Options:
   let bossName = temp.join(' ').toLowerCase();
 
   if (bossName === 'today') {
-    const response = await fetch('https://questland-public-api.cfapps.io/dailyboss/current');
+    let server = 'GLOBAL';
+    if (argv.s) {
+      server = argv.s.toUpperCase();
+    }
+
+    const response = await fetch('https://questland-public-api.cfapps.io/dailyboss/current?server=' + server);
     bossName = response.ok ? await response.json().then(boss => boss.name) : `Couldn't find current daily boss`;
   }
 
