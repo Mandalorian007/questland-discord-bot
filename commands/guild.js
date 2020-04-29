@@ -44,7 +44,7 @@ Examples:
   const guild = response.ok
     ? await response.json()
     : null;
-  console.log(guild);
+
   if (!guild) {
     return `Unable to locate a guild for name: ${ guildName } on server: ${ server.toLowerCase() }`;
   } else {
@@ -54,14 +54,18 @@ Examples:
 
 const printGuild = (guild) => {
   let guildMaster = '';
-  let officers = [];
+  let officers = 'No officers found.';
   if (guild.guildMembers) {
     let temp =
       guild.guildMembers.filter(member => !member.guildRank.localeCompare('owner'))
     guildMaster = temp[0].name
     temp =
-      guild.guildMembers.filter(member => !member.guildRank.localeCompare('officer'))
-    officers = temp.map(member => member.name);
+      guild.guildMembers
+        .filter(member => !member.guildRank.localeCompare('officer'))
+        .map(member => member.name)
+    if (temp.length > 1) {
+      officers = temp;
+    }
   }
 
   try {
@@ -69,13 +73,13 @@ const printGuild = (guild) => {
       .setTitle(`${ guild.name }`)
       .addField('Server', guild.server, false)
       .addField('Guild Master', guildMaster, false)
-      .addField('Description', guild.description, false)
+      .addField('Description', guild.description || guild.description.length > 0 ? guild.description : 'no description', false)
       .addField('Level', guild.level, false)
       .addField('Members', `${ guild.currentMemberCount } / ${ guild.maximumMemberCount }`, false)
       .addField('Research (atk, def, hp, mag)',
         `${ guild.attackResearchLevel }, ${ guild.defenseResearchLevel }, ${ guild.healthResearchLevel }, ${ guild.magicResearchLevel }`,
         false)
-      .addField('Officers', officers.join(", "), false)
+      .addField('Officers', officers, false)
     return { embed };
   } catch (e) {
     console.error(e);
