@@ -43,10 +43,13 @@ Examples:
   const response = await fetch(`https://questland-public-api.cfapps.io/guild/${ guildName }?server=${ server }`);
   const guild = response.ok
     ? await response.json()
-    : `Unable to locate a guild for name: ${ guildName } on server: ` + server;
-
-  return guild ? printGuild(guild) :
-    `Unable to locate a guild for name: ${ guildName } on server: ` + server;
+    : null;
+  console.log(guild);
+  if (!guild) {
+    return `Unable to locate a guild for name: ${ guildName } on server: ${ server.toLowerCase() }`;
+  } else {
+    return printGuild(guild);
+  }
 });
 
 const printGuild = (guild) => {
