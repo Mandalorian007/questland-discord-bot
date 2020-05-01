@@ -23,7 +23,7 @@ const parser = yargs
 // Host a static file for health checks
 const port = process.env.PORT || 3000;
 connect().use(serveStatic('public')).listen(port, function () {
-  console.log(`Server running on ${port}...`);
+  console.log(`Server running on ${ port }...`);
 });
 
 client.on("ready", () => {
