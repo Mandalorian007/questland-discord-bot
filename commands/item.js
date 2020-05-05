@@ -104,12 +104,22 @@ const matchItemName = async (name) => {
     // get an array of item names
     const itemNames = await cache.get('items', loadItemNames);
     // filter by name input
-    return itemNames.filter(i => i.toLowerCase().includes(name.toLowerCase()));
+    return itemNames.filter(i => smarten(i.toLowerCase()).includes(smarten(name.toLowerCase())));
 
   } catch (e) {
     console.error(e);
     return 'Unable to resolve item name.';
   }
+};
+
+// Change straight quotes to curly and double hyphens to em-dashes.
+const smarten = (text) => {
+  text = text.replace(/(^|[-\u2014\s(\["])'/g, "$1\u2018");       // opening singles
+  text = text.replace(/'/g, "\u2019");                            // closing singles & apostrophes
+  text = text.replace(/(^|[-\u2014/\[(\u2018\s])"/g, "$1\u201c"); // opening doubles
+  text = text.replace(/"/g, "\u201d");                            // closing doubles
+  text = text.replace(/--/g, "\u2014");                           // em-dashes
+  return text
 };
 
 const printItem = (item) => {
