@@ -126,6 +126,9 @@ const printItem = (item) => {
   try {
     let embed = new Discord.RichEmbed()
       .setTitle(`${ item.name }`)
+      .addField('Quality', item.quality, false)
+      .addField('Emblem', item.emblem, true)
+      .addField('Item Slot', item.itemSlot, true)
       .addField('Potential (atk, mag, def, hp)',
         '' + item.totalPotential
         + ' (' + item.attackPotential
@@ -133,9 +136,6 @@ const printItem = (item) => {
         + ', ' + item.defensePotential
         + ', ' + item.healthPotential + ')',
         false)
-      .addField('Quality', item.quality, false)
-      .addField('Emblem', item.emblem, false)
-      .addField('Item Slot', item.itemSlot, false)
       .addField('Stats (atk, mag, def, hp)',
         '' + item.attack
         + ', ' + item.magic
