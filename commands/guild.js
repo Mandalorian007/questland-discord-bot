@@ -81,11 +81,12 @@ const printGuild = (guild) => {
       .addField('Guild Master', guildMaster, false)
       .addField('Description', guild.description || guild.description.length > 0 ? guild.description : 'no description', false)
       .addField('Level', guild.level, false)
-      .addField('Members', `${ guild.currentMemberCount } / ${ guild.maximumMemberCount }`, false)
+      .addField('Members', `${ guild.currentMemberCount } / ${ guild.maximumMemberCount }`, true)
       .addField('Research (atk, def, hp, mag)',
         `${ guild.attackResearchLevel }, ${ guild.defenseResearchLevel }, ${ guild.healthResearchLevel }, ${ guild.magicResearchLevel }`,
         false)
       .addField('Officers', officers, false)
+      .setThumbnail('https://questland-discord-bot.cfapps.io/guild.png')
     return { embed };
   } catch (e) {
     console.error(e);
