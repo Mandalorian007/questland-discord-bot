@@ -15,9 +15,9 @@ exports.noResultFoundMessage = (searchTerm, searchCategory) =>
     .setThumbnail('https://questland-discord-bot.cfapps.io/noidea.png');
 
 // Discord message "unknown option value"
-exports.unknownServerMessage = (option, optionAlias, submitted, allowedValues) =>
+exports.optionNotFoundMessage = (option, optionAlias, submitted, allowedValues) =>
   new Discord.RichEmbed()
-    .setTitle(`Unable able parse: ${option}(${optionAlias})`)
+    .setTitle(`Unknown option for: ${option}, ${optionAlias}`)
     .addField('You sent:', `${submitted}`)
     .addField('Available Options:', `${allowedValues.join(', ')}`)
-    .setThumbnail('https://questland-discord-bot.cfapps.io/noidea.png');
+    .setThumbnail('https://questland-discord-bot.cfapps.io/confused.png');

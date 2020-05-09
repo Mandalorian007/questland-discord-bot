@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
 const { asyncHandler } = require("./_helper");
+const { serverMatcher, serverOptions } = require("../helpers/optionHelper");
+const { optionNotFoundMessage } = require("../helpers/messageHelper");
 
 exports.command = 'hero';
 exports.describe = 'Get details about a hero';
@@ -15,8 +17,7 @@ exports.builder = (yargs) => {
     .option('s', {
       alias: 'server',
       demandOption: true,
-      describe: 'Choose a server for the today command.',
-      choices: ['global', 'america', 'europe', 'asia', 'veterans']
+      describe: 'Choose a server for the today command.'
     })
     .option('h', {
       alias: 'help',
@@ -45,8 +46,13 @@ Examples:
   let temp = argv._;
   temp = temp.filter(x => x !== 'hero');
   const heroName = temp.join(' ');
-  const server = argv.s.toUpperCase();
   const guildName = argv.g.join(' ');
+  let server;
+  if(serverMatcher(argv.s)) {
+    server = argv.s.toUpperCase();
+  } else {
+    return optionNotFoundMessage('s', 'server', argv.s, serverOptions)
+  }
 
   const url = `https://questland-public-api.cfapps.io/hero/${ encodeURI(guildName) }/${ heroName }?server=${ server }`;
   const response = await fetch(url);

@@ -22,7 +22,7 @@ Examples:
   !ql orb Behemoth Flames                   Get the details for Behemoth Flames orb at its base level.
   !ql orb Requiem -a 1                      Get the details for Requiem orb at Artifact 1 quality.
   !ql build Turtle                          Get details for the Turtle build.
-  !ql daily-boss Today -s europe            Get SIBB's daily boss build for today's boss on the Europe server.
+  !ql daily-boss today -s europe            Get SIBB's daily boss build for today's boss on the Europe server.
   !ql daily-boss Hierophant                 Get SIBB's daily boss build to defeat the Hierophant.
   !ql guild RedruM -s global                Get the RedruM guild's details from the global server.
   !ql hero ThunderSoap -g RedruM -s global  Get ThunderSoap's hero profile from the RedruM guild on Global.
