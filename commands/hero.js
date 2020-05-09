@@ -80,6 +80,7 @@ const printHero = (hero) => {
       .addField('Hero Power (hp, atk, def, mag)',
         `${ hero.heroPower } (${ hero.health }, ${ hero.attack }, ${ hero.defense }, ${ hero.magic })`,
         false)
+      .setThumbnail('https://questland-discord-bot.cfapps.io/armor.png')
     return { embed };
   } catch (e) {
     console.error(e);
