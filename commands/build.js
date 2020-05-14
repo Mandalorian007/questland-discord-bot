@@ -15,7 +15,7 @@ exports.builder = (yargs) => {
 };
 
 exports.handler = asyncHandler(async (argv) => {
-  if (argv.h || argv._) {
+  if (argv.h) {
     return getHelpMessage();
   }
 
