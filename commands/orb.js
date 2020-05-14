@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 const Discord = require("discord.js");
 const { asyncHandler } = require("./_helper")
-const { multipleResultsFoundMessage, noResultFoundMessage } = require("../helpers/messageHelper");
+const { multipleResultsFoundMessage, noResultFoundMessage, helpMessage } = require("../helpers/messageHelper");
 const { cacheService } = require("../helpers/cache");
 
 const ttl = 60 * 60; // cache for 1 Hour
@@ -26,21 +26,20 @@ exports.builder = (yargs) => {
 
 exports.handler = asyncHandler(async (argv) => {
   if (argv.h) {
-    return `Usage: !ql orb <orb name> [options]
-
-Commands:
-  !ql orb  Get details about a Questland Orb
-
-Options:
-  -a, --artifact  Choose an artifact level                 [choices: 1]
-  -h, --help      Show help                                [boolean]
-
-Examples:
-  !ql orb Behemoth Flames     Get the details for Behemoth Flames orb.
-  !ql orb Requiem -a 1 Get the details for Requem orb at Artifact level 1.
-`
+    return helpMessage(
+      'orb',
+      'Used to get detailed stats about an in game orb at legendary or artifact level.',
+      '`!ql orb <orb name> [options]`',
+      [
+        '`-a, --artifact` Choose an artifact level [choices: 1]'
+      ],
+      [
+        '`!ql orb Behemoth Flames` Get the details for Behemoth Flames orb.',
+        '`!ql orb Requiem -a 1` Get the details for Requem orb at Artifact level 1.'
+      ]
+    )
   }
-    
+
   let temp = argv._;
   temp = temp.filter(x => x !== 'orb');
   let orbName = temp.join(' ');
@@ -82,10 +81,10 @@ Examples:
   if (argv.a) {
     param = `?quality=ARTIFACT${ argv.a }`;
   }
-  
+
   const url = 'https://questland-public-api.cfapps.io/orbs/name/'
-	+ encodeURIComponent(orbName)
-	+ param;
+    + encodeURIComponent(orbName)
+    + param;
   const response = await fetch(url);
 
   return response.ok ? printOrb(await response.json()) : noResultFoundMessage(orbName, 'Orb');

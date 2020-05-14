@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const { turtle, theHecatombus, thePax, ratchetRush } = require("../data/popularBuilds");
 const { asyncHandler } = require("./_helper");
+const { helpMessage } = require("../helpers/messageHelper");
 
 exports.command = 'build';
 exports.describe = 'Get details for a popular build';
@@ -14,21 +15,8 @@ exports.builder = (yargs) => {
 };
 
 exports.handler = asyncHandler(async (argv) => {
-  if (argv.h) {
-    return`Usage: !ql build <build name> [options]
-
-Commands:
-  !ql build  Get details for a popular build
-
-Options:
-  -h, --help      Show help                                [boolean]
-
-Examples:
-  !ql build Turtle     Get details for the Turtle build.
-  
-Build Options:
-  Turtle, Hecatombus, Pax, Ratchet Rush
-`
+  if (argv.h || argv._) {
+    return getHelpMessage();
   }
 
   let temp = argv._;
@@ -36,12 +24,11 @@ Build Options:
   const buildName = temp.join(' ').toLowerCase();
 
   const build = getBuild(buildName);
-  return build ? printBuild(build) :
-    `Unable to locate a build: ${buildName} \nBuild Options: \n` + buildNameOptions;
+  return build ? printBuild(build) : getHelpMessage();
 });
 
 const getBuild = (buildName) => {
-  switch(buildName) {
+  switch (buildName) {
     case 'turtle':
       return turtle;
     case 'hecatombus':
@@ -74,3 +61,18 @@ const printBuild = (build) => {
 };
 
 const buildNameOptions = `  Turtle, Hecatombus, Pax, Ratchet Rush`;
+
+const getHelpMessage = () => helpMessage(
+  'build',
+  'Used to get the details for most of the popular / meta builds',
+  '`!ql build <build options>`',
+  [
+    '`Turtle`',
+    '`Hecatombus`',
+    '`Pax`',
+    '`Ratchet Rush`'
+  ],
+  [
+    '`!ql build Turtle` Get details for the Turtle build.'
+  ]
+);

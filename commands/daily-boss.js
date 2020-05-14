@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const fetch = require("node-fetch");
 const { asyncHandler } = require("./_helper");
 const { serverMatcher, serverOptions } = require("../helpers/optionHelper");
-const { optionNotFoundMessage } = require("../helpers/messageHelper");
+const { optionNotFoundMessage, helpMessage } = require("../helpers/messageHelper");
 const { dailyStandard, whiteBuster, intenseSwordWielding, everlastingStriker } = require("./../data/dailyBuilds");
 
 exports.command = 'daily-boss';
@@ -23,24 +23,7 @@ exports.builder = (yargs) => {
 
 exports.handler = asyncHandler(async (argv) => {
   if (argv.h) {
-    return `Usage: !ql daily-boss <boss name> [options]
-
-Commands:
-  !ql daily-boss  Get SIBB's daily boss build
-
-Options:
-  -h, --help      Show help                                [boolean]
-  -s, --server    Select server for the Today option       [choices: 'global', 'europe', 'america', 'asia', 'veterans']
-
-Examples:
-  !ql daily-boss today -s europe   Get SIBB's daily boss build for today's boss on the Europe server.
-  !ql daily-boss Hierophant        Get SIBB's daily boss build to defeat the Hierophant.
-  
-Boss Options:
-  Today, Shaggy Ape, Rasayan, High Necropriest, Hierophant, Stygian, Octomage, Scorch,
-  Forest Spirit, Reptilian Warrior, Malachite Warrior, Zuulaman, Phantom Miner,
-  White Claw, Bearbarian
-`
+    return getHelpMessage();
   }
 
   let temp = argv._;
@@ -50,7 +33,7 @@ Boss Options:
   if (bossName === 'today') {
     let server = 'GLOBAL';
     if (argv.s) {
-      if(serverMatcher(argv.s)) {
+      if (serverMatcher(argv.s)) {
         server = argv.s.toUpperCase();
       } else {
         return optionNotFoundMessage('s', 'server', argv.s, serverOptions)
@@ -62,8 +45,7 @@ Boss Options:
   }
 
   const build = getBuild(bossName.toLowerCase());
-  return build ? printBuild(build, bossName) :
-    `Unable to locate a build for boss: ${ bossName } \nBoss Options: \n` + bossNameOptions;
+  return build ? printBuild(build, bossName) : getHelpMessage();
 });
 
 const getBuild = (bossName) => {
@@ -109,10 +91,6 @@ const printBuild = (build, bossName) => {
   }
 };
 
-const bossNameOptions = `  Today, Shaggy Ape, Rasayan, High Necropriest, Hierophant, Stygian, Octomage, Scorch,
-  Forest Spirit, Reptilian Warrior, Malachite Warrior, Zuulaman, Phantom Miner,
-  White Claw, Bearbarian`;
-
 const titleCase = (str) => {
   let splitStr = str.toLowerCase().split(' ');
   for (let i = 0; i < splitStr.length; i++) {
@@ -123,3 +101,18 @@ const titleCase = (str) => {
   // Directly return the joined string
   return splitStr.join(' ');
 };
+
+const getHelpMessage = () =>
+  helpMessage(
+    'daily-boss',
+    'Used to get the details for the daily boss builds',
+    '`!ql daily-boss <boss options> [options]`',
+    [
+      '`-s, --server` This option is for selecting a server on the `today` boss option. [choices:  `global`, `europe`, `america`, `asia`, `veterans`]',
+      'boss choices: ```Today, Shaggy Ape, Rasayan, High Necropriest, Hierophant, Stygian, Octomage, Scorch, Forest Spirit, Reptilian Warrior, Malachite Warrior, Zuulaman, Phantom Miner, White Claw, Bearbarian```'
+    ],
+    [
+      '`!ql daily-boss today -s europe` Get SIBB\'s daily boss build for today\'s boss on the Europe server.',
+      '`!ql daily-boss Hierophant` Get SIBB\'s daily boss build to defeat the Hierophant.'
+    ]
+  );

@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const fetch = require("node-fetch");
 const { asyncHandler } = require("./_helper");
 const { serverMatcher, serverOptions } = require("../helpers/optionHelper");
-const { optionNotFoundMessage } = require("../helpers/messageHelper");
+const { optionNotFoundMessage, helpMessage } = require("../helpers/messageHelper");
 
 exports.command = 'guild';
 exports.describe = 'Get details about a guild';
@@ -10,7 +10,7 @@ exports.builder = (yargs) => {
   return yargs
     .option('s', {
       alias: 'server',
-      demandOption: true,
+      demandOption: false,
       describe: 'Choose a server for the today command.'
     })
     .option('h', {
@@ -22,25 +22,24 @@ exports.builder = (yargs) => {
 
 exports.handler = asyncHandler(async (argv) => {
   if (argv.h) {
-    return `Usage: !ql guild <boss name> [options]
-
-Commands:
-  !ql guild RedruM -s global  Get the RedruM guild's details from the global server.
-
-Options:
-  -h, --help      Show help                                [boolean]
-  -s, --server    Select server for the Today option       [choices: 'global', 'europe', 'america', 'asia', 'veterans']
-
-Examples:
-  !ql guild RedruM -s global  Get the RedruM guild's details from the global server.
-`
+    return helpMessage(
+      'guild',
+      'Used to get the details for a guild on any Questland Server!',
+      '`!ql guild <guild name> [options]`',
+      [
+        '`-s, --server` This option is for selecting a server for the guild. [choices:  `global`, `europe`, `america`, `asia`, `veterans`]'
+      ],
+      [
+        '`!ql guild RedruM -s global` Get details about the guild RedruM on the global server.'
+      ]
+    );
   }
 
   let temp = argv._;
   temp = temp.filter(x => x !== 'guild');
   const guildName = temp.join(' ');
   let server;
-  if(serverMatcher(argv.s)) {
+  if (serverMatcher(argv.s)) {
     server = argv.s.toUpperCase();
   } else {
     return optionNotFoundMessage('s', 'server', argv.s, serverOptions)

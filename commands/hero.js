@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const fetch = require("node-fetch");
 const { asyncHandler } = require("./_helper");
 const { serverMatcher, serverOptions } = require("../helpers/optionHelper");
-const { optionNotFoundMessage } = require("../helpers/messageHelper");
+const { optionNotFoundMessage, helpMessage } = require("../helpers/messageHelper");
 
 exports.command = 'hero';
 exports.describe = 'Get details about a hero';
@@ -10,13 +10,13 @@ exports.builder = (yargs) => {
   return yargs
     .option('g', {
       alias: 'guild',
-      demandOption: true,
+      demandOption: false,
       describe: 'Specify the guild your character is currently in.',
       type: 'array'
     })
     .option('s', {
       alias: 'server',
-      demandOption: true,
+      demandOption: false,
       describe: 'Choose a server for the today command.'
     })
     .option('h', {
@@ -28,24 +28,26 @@ exports.builder = (yargs) => {
 
 exports.handler = asyncHandler(async (argv) => {
   if (argv.h) {
-    return `Usage: !ql hero <hero name> [options]
-
-Commands:
-  !ql guild RedruM -s global  Get the RedruM guild's details from the global server.
-
-Options:
-  -h, --help      Show help                                [boolean]
-  -g, --guild     Specify the guild your hero is in        [text]
-  -s, --server    Select server for the Today option       [choices: 'global', 'europe', 'america', 'asia', 'veterans']
-
-Examples:
-  !ql hero ThunderSoap -g RedruM -s global  Get ThunderSoap's hero profile from the RedruM guild on Global.
-`
+    return helpMessage(
+      'hero',
+      'Used to get the details for a specific hero based on their server and guild',
+      '`!ql hero <hero name> [options]`',
+      [
+        '`-g, --guild` This option needs to be supplied the name of the guild that the hero is in.',
+        '`-s, --server` This option is for selecting a server for the guild. [choices:  `global`, `europe`, `america`, `asia`, `veterans`]'
+      ],
+      [
+        '`!ql hero ThunderSoap -g RedruM -s global`  Get ThunderSoap\'s hero profile from the RedruM guild on Global.'
+      ]
+    );
   }
 
   let temp = argv._;
   temp = temp.filter(x => x !== 'hero');
   const heroName = temp.join(' ');
+  if (!argv.g) {
+    return optionNotFoundMessage('g', 'guild', argv.g, [])
+  }
   const guildName = argv.g.join(' ');
   let server;
   if(serverMatcher(argv.s)) {

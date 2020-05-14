@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 const Discord = require("discord.js");
 const { asyncHandler } = require("./_helper");
-const { multipleResultsFoundMessage, noResultFoundMessage } = require("../helpers/messageHelper");
+const { multipleResultsFoundMessage, noResultFoundMessage, helpMessage } = require("../helpers/messageHelper");
 const { cacheService } = require("../helpers/cache");
 
 const ttl = 60 * 60; // cache for 1 Hour
@@ -26,19 +26,18 @@ exports.builder = (yargs) => {
 
 exports.handler = asyncHandler(async (argv) => {
   if (argv.h) {
-    return `Usage: !ql item <item name> [options]
-
-Commands:
-  !ql item  Get details about a Questland Item
-
-Options:
-  -a, --artifact  Choose an artifact level                 [choices: 1, 2, 3, 4]
-  -h, --help      Show help                                [boolean]
-
-Examples:
-  !ql item Hecatombus Get the details for Hecatombus at it's base level.
-  !ql item Hecatombus -a 4  Get the details for Hecatombus at Artifact level 4.
-`
+    return helpMessage(
+      'item',
+      'Used to get detailed stats about an in game item at any legendary or artifact level.',
+      '`!ql item <item name> [options]`',
+      [
+        '`-a, --artifact` Choose an artifact level [choices: 1, 2, 3, 4]'
+      ],
+      [
+        '`!ql item Hecatombus` Get the details for Hecatombus at it\'s base level.',
+        '`!ql item Hecatombus -a 4` Get the details for Hecatombus at Artifact level 4.'
+      ]
+    )
   }
 
   let temp = argv._;

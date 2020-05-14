@@ -1,31 +1,16 @@
 const { asyncHandler } = require("./_helper");
+const Discord = require("discord.js");
 
 exports.command = '$0';
 exports.describe = 'Default Help';
 exports.builder = {};
 
 exports.handler = asyncHandler(async (argv) => {
-  return `Usage: !ql <command> [options]
-
-Commands:
-  !ql item         Get details about a Questland Item
-  !ql orb          Get details about a Questland Orb
-  !ql build        Get details for a popular build
-  !ql daily-boss   Get SIBB's daily boss build
-  !ql guild        Get details about a guild
-  !ql hero         Get details about a hero
-  !ql get-ql-bot   Get QL Bot on your server
-
-Examples:
-  !ql item Hecatombus                       Get the details for Hecatombus at its base level.
-  !ql item Truncheon -a 2                   Get the details for Truncheon at Artifact 2 quality.
-  !ql orb Behemoth Flames                   Get the details for Behemoth Flames orb at its base level.
-  !ql orb Requiem -a 1                      Get the details for Requiem orb at Artifact 1 quality.
-  !ql build Turtle                          Get details for the Turtle build.
-  !ql daily-boss today -s europe            Get SIBB's daily boss build for today's boss on the Europe server.
-  !ql daily-boss Hierophant                 Get SIBB's daily boss build to defeat the Hierophant.
-  !ql guild RedruM -s global                Get the RedruM guild's details from the global server.
-  !ql hero ThunderSoap -g RedruM -s global  Get ThunderSoap's hero profile from the RedruM guild on Global.
-  !ql get-ql-bot                            Get details about how to get QL Bot on your discord server.
-`;
+  return new Discord.RichEmbed()
+    .setTitle('QL Bot command list')
+    .setDescription('For any command just add `-h` or `--help` Ex: ```!ql item --help```')
+    .addField(':card_box: Index Data', ['`item`', '`orb`'], true)
+    .addField(':flower_playing_cards: Profile Lookups', ['`guild`', '`hero`'], true)
+    .addField(':tools: Community Tools', ['`build`', '`daily-boss`'], true)
+    .addField(':information_source: Info', ['`about`', '`get-ql-bot`'], true);
 });
