@@ -30,7 +30,7 @@ exports.handler = asyncHandler(async (argv) => {
     .setTitle('About QL Bot')
     .setDescription('QL Bot is one of many community tools made by ThunderSoap')
     .addField('Contributing','If you would like to contribute please reach out to ThunderSoap on the [Questland public discord](https://discord.com/invite/questland)', false)
-    .addField('Bug Reporting', 'If you find a bug please report it to ThunderSoap on the [Questland public discord](https://discord.com/invite/questland)', false)
+    .addField('Donate', 'Love my work? Want to help me keep everything running and improving? Feel free to support me on [Patreon](https://www.patreon.com/thundersoap) for early updates and sneak peaks on my projects!', false)
     .addField('Other ThunderSoap Community projects',[
       '[ThunderSoap\'s YouTube Questland Guides](https://www.youtube.com/channel/UCLHjCEBoRj-PGCPvmWzQXMQ) - This is a channel for YouTube content to help everyone learn about Questland',
       '[Questland Handbook](https://questland-handbook.cfapps.io/) - This is a community guide website designed to help everyone learn about Questland',
