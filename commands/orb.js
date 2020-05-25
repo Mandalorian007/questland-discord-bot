@@ -104,7 +104,17 @@ const matchOrbName = async (name) => {
     // get an array of orb names
     const orbNames = await cache.get('orbs', loadOrbNames);
     // filter by name input
-    return orbNames.filter(i => smarten(i.toLowerCase()).includes(smarten(name.toLowerCase())));
+    const searchName = smarten(name.toLowerCase());
+    const options = orbNames.filter(i => smarten(i.toLowerCase()).includes(searchName));
+
+    if (options.length > 1) {
+      const exactFinder = options.filter(i => smarten(i.toLowerCase()) === searchName)
+      if (exactFinder.length === 1) {
+        return exactFinder[0];
+      }
+    }
+
+    return options;
 
   } catch (e) {
     console.error(e);
