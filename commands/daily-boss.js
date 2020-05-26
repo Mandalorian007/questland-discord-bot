@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const { asyncHandler } = require("./_helper");
 const { serverMatcher, serverOptions } = require("../helpers/optionHelper");
 const { optionNotFoundMessage, helpMessage } = require("../helpers/messageHelper");
-const { dailyStandard, whiteBuster, intenseSwordWielding, everlastingStriker } = require("./../data/dailyBuilds");
+const { dailyStandard, whiteBuster, intenseSwordWielding, flamingShield } = require("./../data/dailyBuilds");
 
 exports.command = 'daily-boss';
 exports.describe = 'Get daily boss build';
@@ -67,7 +67,7 @@ const getBuild = (bossName) => {
     case 'white claw':
       return intenseSwordWielding;
     case 'bearbarian':
-      return everlastingStriker;
+      return flamingShield;
     default:
       return undefined;
   }

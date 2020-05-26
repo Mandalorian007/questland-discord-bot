@@ -31,25 +31,13 @@ exports.intenseSwordWielding = {
   image: 'https://questlandblog.com/wp-content/uploads/2020/01/B3.png'
 };
 
-// Replaced by the Everlasting Striker build
-exports.armouredBlaster = {
-  name: 'The Armoured Blaster',
+exports.flamingShield = {
+  name: 'The Flaming Shield (SIBB Alternative)',
   weapon1: 'Ratchet Hatchet',
   weapon2: 'Azazel Shield',
   talent1: 'Inner Fire',
-  talent2: 'Faerie Flame',
-  talent3: 'Elevation',
-  details: 'https://questlandblog.com/sibbs-daily-boss-guide-2/',
-  image: 'https://questlandblog.com/wp-content/uploads/2020/01/b4.png'
-};
-
-exports.everlastingStriker = {
-  name: 'The Everlasting Striker (SIBB Alternative)',
-  weapon1: 'Hecatombus',
-  weapon2: 'Azazel Shield',
-  talent1: 'Sword Wielding',
-  talent2: 'Transcendental Tornado',
+  talent2: 'Crystal Chains',
   talent3: 'Elevation',
   details: 'https://questlandblog.com/sibbs-daily-boss-guide-1/',
-  image: 'https://questland-discord-bot.cfapps.io/everlasting-striker.png'
+  image: 'https://questland-discord-bot.cfapps.io/flaming-shield.png'
 };
