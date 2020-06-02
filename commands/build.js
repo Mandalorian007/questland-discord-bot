@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { turtle, theHecatombus, thePax, ratchetRush, boomingTurtle, wardingFang, fireBlaster, icyCannon } = require("../data/buildData");
+const { turtle, theHecatombus, thePax, ratchetRush, boomingTurtle, wardingFang, fireBlaster, icyCannon, redBattleEvent, blueBattleEvent } = require("../data/buildData");
 const { asyncHandler } = require("./_helper");
 const { helpMessage } = require("../helpers/messageHelper");
 
@@ -56,12 +56,14 @@ const printBuild = (build) => {
       .setTitle(`${ build.name }`)
 
     if (build.description) {
-      embed.addField('Description:', build.description, false)
+      embed.addField('Description:', build.description, false);
     }
 
     embed
       .addField('Weapons: ', build.weapons, false)
-      .addField('Weapon alternatives: ', build.weaponAlternates, false)
+      .addField('Main Hand alternatives: ', build.mainHandAlternatives, false)
+      .addField('Off Hand alternatives: ', build.offHandAlternatives, false)
+
       .addField('Talents:',
         build.talent1 + ', ' + build.talent2 + ', ' + build.talent3, false)
       .setURL(build.videoGuide)
@@ -69,14 +71,16 @@ const printBuild = (build) => {
       .setFooter('Love QL Bot? Check out the about command for more good stuff!',
         'https://questland-discord-bot.cfapps.io/ql_weasel.png');
 
+    if (build.links) {
+      embed.addField('Links:', build.links, false);
+    }
+
     return { embed };
   } catch (e) {
     console.error(e);
     return 'Unable to format build data.';
   }
 };
-
-const buildNameOptions = `  Turtle, Hecatombus, Pax, Ratchet Rush`;
 
 const getHelpMessage = () => {
   const richEmbed = new Discord.RichEmbed();
@@ -92,6 +96,10 @@ const getHelpMessage = () => {
       '`Pax`',
       '`Ratchet Rush`'
     ], false)
+    .addField('Battle Event Build Options', [
+      '`Red BE`',
+      '`Blue BE`'
+    ], false)
     .addField('Arena Build Options', [
       '`Booming Turtle`',
       '`Warding Fang`',
@@ -103,21 +111,3 @@ const getHelpMessage = () => {
     ], false);
   return richEmbed;
 }
-
-
-
-
-  helpMessage(
-  'build',
-  'Used to get the details for most of the popular / meta builds',
-  '`!ql build <build options>`',
-  [
-    '`Turtle`',
-    '`Hecatombus`',
-    '`Pax`',
-    '`Ratchet Rush`'
-  ],
-  [
-    '`!ql build Turtle` Get details for the Turtle build.'
-  ]
-);

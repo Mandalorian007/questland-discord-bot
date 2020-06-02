@@ -1,7 +1,8 @@
 exports.dailyStandard = {
   name: 'The Daily Standard',
   weapons: 'Hecatombus, Thunderclap',
-  weaponAlternates: 'Azazel Shield, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
+  mainHandAlternatives: 'Red Hoarder: None',
+  offHandAlternatives: 'Support for Destroyers: Azazel Shield, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
   talent1: 'Sword Wielding',
   talent2: 'Transcendental Tornado',
   talent3: 'Crest Guardian',
@@ -12,7 +13,8 @@ exports.dailyStandard = {
 exports.whiteBuster = {
   name: 'The White Buster',
   weapons: 'Combuster, Flesheater',
-  weaponAlternates: 'Divine Intervention, Annihilator, Iron Bat, Ashes to Ashes Ward',
+  mainHandAlternatives: 'Cherry On Top: Divine Intervention, Annihilator',
+  offHandAlternatives: 'Spontaneous Spirits: Iron Bat, Ashes to Ashes Ward',
   talent1: 'Berserker',
   talent2: 'any',
   talent3: 'Crest Guardian',
@@ -23,7 +25,8 @@ exports.whiteBuster = {
 exports.intenseSwordWielding = {
   name: 'The Intense Sword Wielding',
   weapons: 'Hecatombus, Thunderclap',
-  weaponAlternates: 'Azazel Shield, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
+  mainHandAlternatives: 'Red Hoarder: None',
+  offHandAlternatives: 'Support for Destroyers: Azazel Shield, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
   talent1: 'Sword Wielding',
   talent2: 'Firebird',
   talent3: 'Crest Guardian',
@@ -34,7 +37,8 @@ exports.intenseSwordWielding = {
 exports.flamingShield = {
   name: 'The Flaming Shield (SIBB Alternative)',
   weapons: 'Ratchet Hatchet, Thunderclap',
-  weaponAlternates: 'The Last Wish, Azazel Shield, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
+  mainHandAlternatives: 'Red Blast & Blue Twist: The Last Wish',
+  offHandAlternatives: 'Support for Destroyers: Azazel Shield, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
   talent1: 'Inner Fire',
   talent2: 'Crystal Chains',
   talent3: 'Elevation',

@@ -79,7 +79,8 @@ const printBuild = (build, bossName) => {
       .setTitle(`${ build.name }`)
       .addField('Daily Challenge Boss', titleCase(bossName), false)
       .addField('Weapons: ', build.weapons, false)
-      .addField('Weapon alternatives: ', build.weaponAlternates, false)
+      .addField('Main Hand alternatives: ', build.mainHandAlternatives, false)
+      .addField('Off Hand alternatives: ', build.offHandAlternatives, false)
       .addField('Talents:',
         build.talent1 + ', ' + build.talent2 + ', ' + build.talent3, false)
       .setURL(build.details)
