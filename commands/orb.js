@@ -148,7 +148,9 @@ const printOrb = (orb) => {
         + ', ' + orb.magic
         + ', ' + orb.defense
         + ', ' + orb.health,
-        false);
+        false)
+      .setFooter('Love QL Bot? Check out the about command for more good stuff!',
+        'https://questland-discord-bot.cfapps.io/ql_weasel.png');
 
     return { embed };
   } catch (e) {

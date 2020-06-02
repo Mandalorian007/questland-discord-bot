@@ -86,6 +86,8 @@ const printGuild = (guild) => {
         false)
       .addField('Officers', officers, false)
       .setThumbnail('https://questland-discord-bot.cfapps.io/guild.png')
+      .setFooter('Love QL Bot? Check out the about command for more good stuff!',
+        'https://questland-discord-bot.cfapps.io/ql_weasel.png');
     return { embed };
   } catch (e) {
     console.error(e);

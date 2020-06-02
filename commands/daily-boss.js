@@ -82,7 +82,9 @@ const printBuild = (build, bossName) => {
       .addField('Talents:',
         build.talent1 + ', ' + build.talent2 + ', ' + build.talent3, false)
       .setURL(build.details)
-      .setImage(build.image);
+      .setImage(build.image)
+      .setFooter('Love QL Bot? Check out the about command for more good stuff!',
+        'https://questland-discord-bot.cfapps.io/ql_weasel.png');
 
     return { embed };
   } catch (e) {

@@ -150,7 +150,9 @@ const printItem = (item) => {
         + ', ' + item.magic
         + ', ' + item.defense
         + ', ' + item.health,
-        false);
+        false)
+      .setFooter('Love QL Bot? Check out the about command for more good stuff!',
+        'https://questland-discord-bot.cfapps.io/ql_weasel.png');
 
     if (item.passive1Name) {
       embed.addField('Item Passive 1',

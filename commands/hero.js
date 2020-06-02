@@ -83,6 +83,8 @@ const printHero = (hero) => {
         `${ hero.heroPower } (${ hero.health }, ${ hero.attack }, ${ hero.defense }, ${ hero.magic })`,
         false)
       .setThumbnail('https://questland-discord-bot.cfapps.io/armor.png')
+      .setFooter('Love QL Bot? Check out the about command for more good stuff!',
+        'https://questland-discord-bot.cfapps.io/ql_weasel.png');
     return { embed };
   } catch (e) {
     console.error(e);
