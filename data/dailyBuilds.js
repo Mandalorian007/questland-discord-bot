@@ -1,7 +1,7 @@
 exports.dailyStandard = {
   name: 'The Daily Standard',
-  weapon1: 'Hecatombus',
-  weapon2: 'Thunderclap',
+  weapons: 'Hecatombus, Thunderclap',
+  weaponAlternates: 'Azazel Shield, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
   talent1: 'Sword Wielding',
   talent2: 'Transcendental Tornado',
   talent3: 'Crest Guardian',
@@ -11,8 +11,8 @@ exports.dailyStandard = {
 
 exports.whiteBuster = {
   name: 'The White Buster',
-  weapon1: 'Combuster',
-  weapon2: 'Flesheater',
+  weapons: 'Combuster, Flesheater',
+  weaponAlternates: 'Divine Intervention, Annihilator, Iron Bat, Ashes to Ashes Ward',
   talent1: 'Berserker',
   talent2: 'any',
   talent3: 'Crest Guardian',
@@ -22,8 +22,8 @@ exports.whiteBuster = {
 
 exports.intenseSwordWielding = {
   name: 'The Intense Sword Wielding',
-  weapon1: 'Hecatombus',
-  weapon2: 'Thunderclap',
+  weapons: 'Hecatombus, Thunderclap',
+  weaponAlternates: 'Azazel Shield, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
   talent1: 'Sword Wielding',
   talent2: 'Firebird',
   talent3: 'Crest Guardian',
@@ -33,11 +33,11 @@ exports.intenseSwordWielding = {
 
 exports.flamingShield = {
   name: 'The Flaming Shield (SIBB Alternative)',
-  weapon1: 'Ratchet Hatchet',
-  weapon2: 'Thunderclap',
+  weapons: 'Ratchet Hatchet, Thunderclap',
+  weaponAlternates: 'The Last Wish, Azazel Shield, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
   talent1: 'Inner Fire',
   talent2: 'Crystal Chains',
   talent3: 'Elevation',
   details: 'https://questlandblog.com/sibbs-daily-boss-guide-1/',
-  image: 'https://questland-discord-bot.cfapps.io/flaming-shield.png'
+  image: 'https://questland-discord-bot.cfapps.io/flaming-shield-2.png'
 };

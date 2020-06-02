@@ -78,7 +78,8 @@ const printBuild = (build, bossName) => {
     const embed = new Discord.RichEmbed()
       .setTitle(`${ build.name }`)
       .addField('Daily Challenge Boss', titleCase(bossName), false)
-      .addField('Weapons:', build.weapon1 + ', ' + build.weapon2, false)
+      .addField('Weapons: ', build.weapons, false)
+      .addField('Weapon alternatives: ', build.weaponAlternates, false)
       .addField('Talents:',
         build.talent1 + ', ' + build.talent2 + ', ' + build.talent3, false)
       .setURL(build.details)
