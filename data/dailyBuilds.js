@@ -1,12 +1,12 @@
 exports.dailyStandard = {
   name: 'The Daily Standard',
   weapon1: 'Hecatombus',
-  weapon2: 'Azazel Shield',
+  weapon2: 'Thunderclap',
   talent1: 'Sword Wielding',
   talent2: 'Transcendental Tornado',
   talent3: 'Crest Guardian',
   details: 'https://questlandblog.com/sibbs-daily-boss-guide-1/',
-  image: 'https://questlandblog.com/wp-content/uploads/2019/12/1.png'
+  image: 'https://questland-discord-bot.cfapps.io/daily-standard.png'
 };
 
 exports.whiteBuster = {
@@ -23,18 +23,18 @@ exports.whiteBuster = {
 exports.intenseSwordWielding = {
   name: 'The Intense Sword Wielding',
   weapon1: 'Hecatombus',
-  weapon2: 'Azazel Shield',
+  weapon2: 'Thunderclap',
   talent1: 'Sword Wielding',
   talent2: 'Firebird',
   talent3: 'Crest Guardian',
   details: 'https://questlandblog.com/sibbs-daily-boss-guide-2/',
-  image: 'https://questlandblog.com/wp-content/uploads/2020/01/B3.png'
+  image: 'https://questland-discord-bot.cfapps.io/intense-sword-wielding.png'
 };
 
 exports.flamingShield = {
   name: 'The Flaming Shield (SIBB Alternative)',
   weapon1: 'Ratchet Hatchet',
-  weapon2: 'Azazel Shield',
+  weapon2: 'Thunderclap',
   talent1: 'Inner Fire',
   talent2: 'Crystal Chains',
   talent3: 'Elevation',
