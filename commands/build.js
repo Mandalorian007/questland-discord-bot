@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { turtle, theHecatombus, thePax, ratchetRush } = require("../data/popularBuilds");
+const { turtle, theHecatombus, thePax, ratchetRush, boomingTurtle, wardingFang, fireBlaster, icyCannon } = require("../data/buildData");
 const { asyncHandler } = require("./_helper");
 const { helpMessage } = require("../helpers/messageHelper");
 
@@ -37,6 +37,14 @@ const getBuild = (buildName) => {
       return thePax;
     case 'ratchet rush':
       return ratchetRush;
+    case 'booming turtle':
+      return boomingTurtle;
+    case 'warding fang':
+      return wardingFang;
+    case 'fire blaster':
+      return fireBlaster;
+    case 'icy cannon':
+      return icyCannon;
     default:
       return undefined;
   }
@@ -46,11 +54,17 @@ const printBuild = (build) => {
   try {
     const embed = new Discord.RichEmbed()
       .setTitle(`${ build.name }`)
+
+    if (build.description) {
+      embed.addField('Description:', build.description, false)
+    }
+
+    embed
       .addField('Weapons: ', build.weapons, false)
       .addField('Weapon alternatives: ', build.weaponAlternates, false)
       .addField('Talents:',
         build.talent1 + ', ' + build.talent2 + ', ' + build.talent3, false)
-      .setURL(build.details)
+      .setURL(build.videoGuide)
       .setImage(build.image)
       .setFooter('Love QL Bot? Check out the about command for more good stuff!',
         'https://questland-discord-bot.cfapps.io/ql_weasel.png');
@@ -64,7 +78,36 @@ const printBuild = (build) => {
 
 const buildNameOptions = `  Turtle, Hecatombus, Pax, Ratchet Rush`;
 
-const getHelpMessage = () => helpMessage(
+const getHelpMessage = () => {
+  const richEmbed = new Discord.RichEmbed();
+  richEmbed
+    .setTitle('build')
+    .setDescription('Used to get the details for common Questland builds')
+    .addField('Usage', `!ql build <build options>`, false)
+    .addField('Core/ Popular Build Options', [
+      '`Turtle`',
+      '`Hecatombus`'
+    ], false)
+    .addField('Campaign Favorite Build Options', [
+      '`Pax`',
+      '`Ratchet Rush`'
+    ], false)
+    .addField('Arena Build Options', [
+      '`Booming Turtle`',
+      '`Warding Fang`',
+      '`Icy Cannon`',
+      '`Fire Blaster`'
+    ], false)
+    .addField('Examples', [
+      '`!ql build Turtle` Get details for the Turtle build.'
+    ], false);
+  return richEmbed;
+}
+
+
+
+
+  helpMessage(
   'build',
   'Used to get the details for most of the popular / meta builds',
   '`!ql build <build options>`',
