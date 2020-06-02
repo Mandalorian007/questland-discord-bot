@@ -1,12 +1,12 @@
 exports.theHecatombus = {
   name: 'The Hecatombus',
-  weapons: 'Hecatombus, Azazel Shield',
-  weaponAlternates: 'Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
+  weapons: 'Hecatombus, Thunderclap',
+  weaponAlternates: 'Azazel Shield, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
   talent1: 'Bloodlust',
   talent2: 'Transcendental Tornado',
   talent3: 'Crest Guardian',
   details: 'https://www.youtube.com/watch?v=wu-9ES9aAZg',
-  image: 'https://questland-discord-bot.cfapps.io/hecatombus.jpg'
+  image: 'https://questland-discord-bot.cfapps.io/hecatombus.png'
 };
 
 exports.turtle = {
@@ -33,11 +33,11 @@ exports.thePax = {
 
 exports.ratchetRush = {
   name: 'Ratchet Rush',
-  weapons: 'Ratchet Hatchet, Azazel Shield',
-  weaponAlternates: 'The Last Wish, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
+  weapons: 'Ratchet Hatchet, Thunderclap',
+  weaponAlternates: 'The Last Wish, Azazel Shield, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
   talent1: 'Inner Fire',
   talent2: 'Faerie Flame',
   talent3: 'Elevation',
   details: 'https://www.youtube.com/watch?v=EnMpxvYR7L8',
-  image: 'https://questland-discord-bot.cfapps.io/ratchet-rush.jpg'
+  image: 'https://questland-discord-bot.cfapps.io/ratchet-rush.png'
 };
