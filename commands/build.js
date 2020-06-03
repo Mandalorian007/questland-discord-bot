@@ -37,6 +37,10 @@ const getBuild = (buildName) => {
       return thePax;
     case 'ratchet rush':
       return ratchetRush;
+    case 'red be':
+      return redBattleEvent;
+    case 'blue be':
+      return blueBattleEvent;
     case 'booming turtle':
       return boomingTurtle;
     case 'warding fang':
