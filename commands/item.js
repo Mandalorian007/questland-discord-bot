@@ -15,7 +15,7 @@ exports.builder = (yargs) => {
       alias: 'artifact',
       demandOption: false,
       describe: 'Choose an artifact level',
-      choices: [1, 2, 3, 4]
+      choices: [1, 2, 3, 4, 5]
     })
     .option('h', {
       alias: 'help',
@@ -31,7 +31,7 @@ exports.handler = asyncHandler(async (argv) => {
       'Used to get detailed stats about an in game item at any legendary or artifact level.',
       '`!ql item <item name> [options]`',
       [
-        '`-a, --artifact` Choose an artifact level [choices: 1, 2, 3, 4]'
+        '`-a, --artifact` Choose an artifact level [choices: 1, 2, 3, 4, 5]'
       ],
       [
         '`!ql item Hecatombus` Get the details for Hecatombus at it\'s base level.',
