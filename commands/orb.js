@@ -136,18 +136,18 @@ const printOrb = (orb) => {
   try {
     const embed = new Discord.RichEmbed()
       .setTitle(`${ orb.name }`)
-      .addField('Potential (atk, mag, def, hp)',
-        '' + orb.attackPotential
-        + ', ' + orb.magicPotential
+      .addField('Potential (hp, atk, def, mag)',
+        '' + orb.healthPotential
+        + ', ' + orb.attackPotential
         + ', ' + orb.defensePotential
-        + ', ' + orb.healthPotential,
+        + ', ' + orb.magicPotential,
         false)
       .addField('Quality', orb.quality, false)
-      .addField('Stats (atk, mag, def, hp)',
-        '' + orb.attack
-        + ', ' + orb.magic
+      .addField('Stats (hp, atk, def, mag)',
+        '' + orb.health
+        + ', ' + orb.attack
         + ', ' + orb.defense
-        + ', ' + orb.health,
+        + ', ' + orb.magic,
         false)
       .setFooter('Love QL Bot? Check out the about command for more good stuff!',
         'https://questland-discord-bot.cfapps.io/ql_weasel.png');

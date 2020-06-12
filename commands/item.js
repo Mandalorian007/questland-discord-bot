@@ -31,7 +31,7 @@ exports.handler = asyncHandler(async (argv) => {
       'Used to get detailed stats about an in game item at any legendary or artifact level.',
       '`!ql item <item name> [options]`',
       [
-        '`-a, --artifact` Choose an artifact level [choices: 1, 2, 3, 4, 5]'
+        '`-a, --artifact` Choose an artifact level [choices: 1, 2, 3, 4]'
       ],
       [
         '`!ql item Hecatombus` Get the details for Hecatombus at it\'s base level.',
@@ -138,18 +138,18 @@ const printItem = (item) => {
       .addField('Quality', item.quality, false)
       .addField('Emblem', item.emblem, true)
       .addField('Item Slot', item.itemSlot, true)
-      .addField('Potential (atk, mag, def, hp)',
+      .addField('Potential (hp, atk, def, mag)',
         '' + item.totalPotential
-        + ' (' + item.attackPotential
-        + ', ' + item.magicPotential
+        + ' (' + item.healthPotential
+        + ', ' + item.attackPotential
         + ', ' + item.defensePotential
-        + ', ' + item.healthPotential + ')',
+        + ', ' + item.magicPotential + ')',
         false)
-      .addField('Stats (atk, mag, def, hp)',
-        '' + item.attack
-        + ', ' + item.magic
+      .addField('Stats (hp, atk, def, mag)',
+        '' + item.health
+        + ', ' + item.attack
         + ', ' + item.defense
-        + ', ' + item.health,
+        + ', ' + item.magic,
         false)
       .setFooter('Love QL Bot? Check out the about command for more good stuff!',
         'https://questland-discord-bot.cfapps.io/ql_weasel.png');
