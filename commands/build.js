@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { turtle, theHecatombus, thePax, ratchetRush, boomingTurtle, wardingFang, fireBlaster, icyCannon, redBattleEvent, blueBattleEvent } = require("../data/buildData");
+const { turtle, theHecatombus, thePax, shinobi, ratchetRush, boomingTurtle, wardingFang, fireBlaster, icyCannon, redBattleEvent, blueBattleEvent } = require("../data/buildData");
 const { asyncHandler } = require("./_helper");
 const { helpMessage } = require("../helpers/messageHelper");
 
@@ -35,6 +35,8 @@ const getBuild = (buildName) => {
       return theHecatombus;
     case 'pax':
       return thePax;
+    case 'shinobi':
+      return shinobi;
     case 'ratchet rush':
       return ratchetRush;
     case 'red be':

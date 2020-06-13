@@ -62,6 +62,19 @@ exports.thePax = {
   image: 'https://questland-discord-bot.cfapps.io/pax.png'
 };
 
+exports.shinobi = {
+  name: 'Shinobi',
+  description: 'This build is incredible for clearing Campaign levels with tons of melee enemies or really dodge happy opponents. If your shield isn\'t breaking fast enough remove your defense orbs and collections.',
+  weapons: 'Hecatombus, Thunderclap',
+  mainHandAlternatives: 'Red Hoarder: None',
+  offHandAlternatives: 'Support for Destroyers: Azazel Shield, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
+  talent1: 'Assassin\'s Way',
+  talent2: 'Divine Force',
+  talent3: 'Crest Guardian',
+  videoGuide: 'https://youtu.be/tRp6RgmFjOI',
+  image: 'https://questland-discord-bot.cfapps.io/shinobi.png'
+};
+
 exports.ratchetRush = {
   name: 'Ratchet Rush',
   weapons: 'Ratchet Hatchet, Thunderclap',
