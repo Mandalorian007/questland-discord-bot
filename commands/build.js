@@ -100,7 +100,8 @@ const getHelpMessage = () => {
     ], false)
     .addField('Campaign Favorite Build Options', [
       '`Pax`',
-      '`Ratchet Rush`'
+      '`Ratchet Rush`',
+      '`Shinobi`'
     ], false)
     .addField('Battle Event Build Options', [
       '`Red BE`',
