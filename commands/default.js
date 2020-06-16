@@ -13,5 +13,6 @@ exports.handler = asyncHandler(async (argv) => {
     .addField(':card_box: Index Data', ['`item`', '`orb`'], true)
     .addField(':flower_playing_cards: Profile Lookups', ['`guild`', '`hero`'], true)
     .addField(':crossed_swords: Community Builds', ['`build`', '`daily-boss`'], true)
+    .addField(':tools: Community Tools', ['`monster-slayer`'], true)
     .addField(':information_source: Info', ['`about`'], true);
 });
