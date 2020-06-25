@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
-const { turtle, theHecatombus, thePax, shinobi, ratchetRush, boomingTurtle, wardingFang, fireBlaster, icyCannon, redBattleEvent, blueBattleEvent } = require("../data/buildData");
+const fetch = require("node-fetch");
 const { asyncHandler } = require("./_helper");
-const { helpMessage } = require("../helpers/messageHelper");
 
 exports.command = 'build';
 exports.describe = 'Get details for a popular build';
@@ -23,34 +22,41 @@ exports.handler = asyncHandler(async (argv) => {
   temp = temp.filter(x => x !== 'build');
   const buildName = temp.join(' ').toLowerCase();
 
-  const build = getBuild(buildName);
+  const apiBuildName = getApiBuildName(buildName);
+  if (apiBuildName === undefined) {
+    return getHelpMessage();
+  }
+
+  const response = await fetch('https://questland-public-api.cfapps.io/build/' + apiBuildName);
+  let build = response.ok ? await response.json() : undefined;
+
   return build ? printBuild(build) : getHelpMessage();
 });
 
-const getBuild = (buildName) => {
+const getApiBuildName = (buildName) => {
   switch (buildName) {
     case 'turtle':
-      return turtle;
+      return 'turtle';
     case 'hecatombus':
-      return theHecatombus;
+      return 'hecatombus';
     case 'pax':
-      return thePax;
+      return 'the_pax';
     case 'shinobi':
-      return shinobi;
+      return 'shinobi';
     case 'ratchet rush':
-      return ratchetRush;
+      return 'ratchet_rush';
     case 'red be':
-      return redBattleEvent;
+      return 'red_battle_event';
     case 'blue be':
-      return blueBattleEvent;
+      return 'blue_battle_event';
     case 'booming turtle':
-      return boomingTurtle;
+      return 'booming_turtle';
     case 'warding fang':
-      return wardingFang;
+      return 'warding_fang';
     case 'fire blaster':
-      return fireBlaster;
+      return 'fire_blaster';
     case 'icy cannon':
-      return icyCannon;
+      return 'icy_cannon';
     default:
       return undefined;
   }
