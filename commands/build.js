@@ -57,6 +57,8 @@ const getApiBuildName = (buildName) => {
       return 'fire_blaster';
     case 'icy cannon':
       return 'icy_cannon';
+    case 'the farmer':
+      return 'the_farmer';
     default:
       return undefined;
   }
@@ -117,7 +119,8 @@ const getHelpMessage = () => {
       '`Booming Turtle`',
       '`Warding Fang`',
       '`Icy Cannon`',
-      '`Fire Blaster`'
+      '`Fire Blaster`',
+      '`The Farmer`'
     ], false)
     .addField('Examples', [
       '`!ql build Turtle` Get details for the Turtle build.'
