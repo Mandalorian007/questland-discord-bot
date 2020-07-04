@@ -10,7 +10,7 @@ exports.handler = asyncHandler(async (argv) => {
   return new Discord.RichEmbed()
     .setTitle('QL Bot command list')
     .setDescription('For any command just add `-h` or `--help` Ex: ```!ql item --help```')
-    .addField(':card_box: Index Data', ['`item`', '`orb`'], true)
+    .addField(':card_box: Index Data', ['`item`', '`orb`', '`hard-boss`', '`guild-boss`'], true)
     .addField(':flower_playing_cards: Profile Lookups', ['`guild`', '`hero`'], true)
     .addField(':crossed_swords: Community Builds', ['`build`', '`daily-boss`'], true)
     .addField(':tools: Community Tools', ['`monster-slayer`'], true)
