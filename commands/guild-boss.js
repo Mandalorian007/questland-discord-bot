@@ -36,10 +36,10 @@ const printStats = (level, guildBossStats) => {
       .setFooter('Love QL Bot? Check out the about command for more good stuff!',
         'https://questland-discord-bot.cfapps.io/ql_weasel.png')
       .addField("Level", level)
-      .addField("Health", Number(hardBossStats[level].health).toLocaleString())
-      .addField("Attack", Number(hardBossStats[level].attack).toLocaleString())
-      .addField("Defense", Number(hardBossStats[level].defense).toLocaleString())
-      .addField("Magic", Number(hardBossStats[level].magic).toLocaleString())
+      .addField("Health", Number(guildBossStats[level].health).toLocaleString())
+      .addField("Attack", Number(guildBossStats[level].attack).toLocaleString())
+      .addField("Defense", Number(guildBossStats[level].defense).toLocaleString())
+      .addField("Magic", Number(guildBossStats[level].magic).toLocaleString())
 
     return { embed };
   } catch (e) {
