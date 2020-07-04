@@ -76,6 +76,7 @@ const printGuild = (guild) => {
   try {
     const embed = new Discord.RichEmbed()
       .setTitle(`${ guild.name }`)
+      .setURL('https://questland-handbook.cfapps.io/tools/guild-lookup')
       .addField('Server', guild.server, false)
       .addField('Guild Master', guildMaster, false)
       .addField('Description', guild.description || guild.description.length > 0 ? guild.description : 'no description', false)
