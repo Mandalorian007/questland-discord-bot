@@ -56,7 +56,7 @@ exports.handler = asyncHandler(async (argv) => {
     return optionNotFoundMessage('s', 'server', argv.s, serverOptions)
   }
 
-  const url = `https://questland-public-api.cfapps.io/hero/${ encodeURI(guildName) }/${ heroName }?server=${ server }`;
+  const url = `https://questland-public-api.cfapps.io/hero/${ encodeURI(guildName) }/${ encodeURI(heroName) }?server=${ server }`;
   const response = await fetch(url);
   const hero = response.ok
     ? await response.json()
