@@ -138,6 +138,7 @@ const printItem = (item) => {
       .addField('Quality', item.quality, false)
       .addField('Emblem', item.emblem, true)
       .addField('Item Slot', item.itemSlot, true)
+      .addField('Reforge Points per level', item.reforgePointsPerLevel, true)
       .addField('Potential (hp, atk, def, mag)',
         '' + item.totalPotential
         + ' (' + item.healthPotential
