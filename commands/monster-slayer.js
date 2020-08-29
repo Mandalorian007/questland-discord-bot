@@ -31,9 +31,9 @@ const printScores = (monsterSlayer) => {
   try {
     const embed = new Discord.RichEmbed()
         .setTitle(`Monster Slayer`)
-        .setThumbnail('https://questland-discord-bot.cfapps.io/monster-slayer-coffee.png')
-        .setFooter('Love QL Bot? Check out the about command for more good stuff!',
-                'https://questland-discord-bot.cfapps.io/ql_weasel.png');
+        .setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)' +
+            '\n----------------------------------------------------------------')
+        .setThumbnail('https://questland-discord-bot.cfapps.io/monster-slayer-coffee.png');
     if(monsterSlayer) {
         var scores = [];
         for (i = 0; i < 10; i++) {

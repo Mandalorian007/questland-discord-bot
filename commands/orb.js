@@ -196,6 +196,8 @@ const printOrb = (scaledOrb) => {
   try {
     const embed = new Discord.RichEmbed()
       .setTitle(`${ scaledOrb.name }`)
+      .setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)' +
+          '\n----------------------------------------------------------------')
       .addField(`Potential at enhance ${scaledOrb.enhance} (hp, atk, def, mag)`,
         '' + scaledOrb.healthPotential
         + ', ' + scaledOrb.attackPotential
@@ -208,9 +210,7 @@ const printOrb = (scaledOrb) => {
         + ', ' + scaledOrb.attack
         + ', ' + scaledOrb.defense
         + ', ' + scaledOrb.magic,
-        false)
-      .setFooter('Love QL Bot? Check out the about command for more good stuff!',
-        'https://questland-discord-bot.cfapps.io/ql_weasel.png');
+        false);
 
     return { embed };
   } catch (e) {

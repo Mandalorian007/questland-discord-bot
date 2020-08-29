@@ -76,6 +76,8 @@ const printGuild = (guild) => {
   try {
     const embed = new Discord.RichEmbed()
       .setTitle(`${ guild.name }`)
+      .setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)' +
+          '\n----------------------------------------------------------------')
       .setURL('https://questland-handbook.cfapps.io/tools/guild-lookup')
       .addField('Server', guild.server, false)
       .addField('Guild Master', guildMaster, false)
@@ -86,9 +88,7 @@ const printGuild = (guild) => {
         `${ guild.attackResearchLevel }, ${ guild.defenseResearchLevel }, ${ guild.healthResearchLevel }, ${ guild.magicResearchLevel }`,
         false)
       .addField('Officers', officers, false)
-      .setThumbnail('https://questland-discord-bot.cfapps.io/guild.png')
-      .setFooter('Love QL Bot? Check out the about command for more good stuff!',
-        'https://questland-discord-bot.cfapps.io/ql_weasel.png');
+      .setThumbnail('https://questland-discord-bot.cfapps.io/guild.png');
     return { embed };
   } catch (e) {
     console.error(e);

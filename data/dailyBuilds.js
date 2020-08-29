@@ -10,8 +10,8 @@ exports.dailyStandard = {
   image: 'https://questland-discord-bot.cfapps.io/daily-standard.png'
 };
 
-exports.whiteBuster = {
-  name: 'The White Buster',
+exports.whiteout = {
+  name: 'Whiteout',
   weapons: 'Combuster, Flesheater',
   mainHandAlternatives: 'Cherry On Top: Divine Intervention, Annihilator',
   offHandAlternatives: 'Spontaneous Spirits: Iron Bat, Ashes to Ashes Ward',

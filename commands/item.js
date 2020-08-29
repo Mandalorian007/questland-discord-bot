@@ -135,6 +135,8 @@ const printItem = (item) => {
   try {
     let embed = new Discord.RichEmbed()
       .setTitle(`${ item.name }`)
+      .setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)' +
+          '\n----------------------------------------------------------------')
       .addField('Quality', item.quality, false)
       .addField('Emblem', item.emblem, true)
       .addField('Item Slot', item.itemSlot, true)
@@ -151,9 +153,7 @@ const printItem = (item) => {
         + ', ' + item.attack
         + ', ' + item.defense
         + ', ' + item.magic,
-        false)
-      .setFooter('Love QL Bot? Check out the about command for more good stuff!',
-        'https://questland-discord-bot.cfapps.io/ql_weasel.png');
+        false);
 
     if (item.passive1Name) {
       embed.addField('Item Passive 1',

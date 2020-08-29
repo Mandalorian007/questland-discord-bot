@@ -68,6 +68,8 @@ const printBuild = (build) => {
   try {
     const embed = new Discord.RichEmbed()
       .setTitle(`${ build.name }`)
+      .setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)' +
+          '\n----------------------------------------------------------------');
 
     if (build.description) {
       embed.addField('Description:', build.description, false);
@@ -81,9 +83,7 @@ const printBuild = (build) => {
       .addField('Talents:',
         build.talent1 + ', ' + build.talent2 + ', ' + build.talent3, false)
       .setURL(build.videoGuide)
-      .setImage(build.image)
-      .setFooter('Love QL Bot? Check out the about command for more good stuff!',
-        'https://questland-discord-bot.cfapps.io/ql_weasel.png');
+      .setImage(build.image);
 
     if (build.links) {
       embed.addField('Links:', build.links, false);

@@ -74,6 +74,8 @@ const printHero = (hero) => {
   try {
     const embed = new Discord.RichEmbed()
       .setTitle(`${ hero.name } [ ${ hero.server } - ${ hero.guild }]`)
+      .setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)' +
+          '\n----------------------------------------------------------------')
       .addField('Level', hero.level, false)
       .addField('Days Played', hero.daysPlayed, false)
       .addField('Hall of Fame Rank', hero.heroPowerRank, false)
@@ -82,9 +84,7 @@ const printHero = (hero) => {
       .addField('Hero Power (hp, atk, def, mag)',
         `${ hero.heroPower } (${ hero.health }, ${ hero.attack }, ${ hero.defense }, ${ hero.magic })`,
         false)
-      .setThumbnail('https://questland-discord-bot.cfapps.io/armor.png')
-      .setFooter('Love QL Bot? Check out the about command for more good stuff!',
-        'https://questland-discord-bot.cfapps.io/ql_weasel.png');
+      .setThumbnail('https://questland-discord-bot.cfapps.io/armor.png');
     return { embed };
   } catch (e) {
     console.error(e);

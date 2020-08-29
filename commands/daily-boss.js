@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const { asyncHandler } = require("./_helper");
 const { serverMatcher, serverOptions } = require("../helpers/optionHelper");
 const { optionNotFoundMessage, helpMessage } = require("../helpers/messageHelper");
-const { dailyStandard, whiteBuster, intenseSwordWielding, flamingShield } = require("./../data/dailyBuilds");
+const { dailyStandard, whiteout, intenseSwordWielding, flamingShield } = require("./../data/dailyBuilds");
 
 exports.command = 'daily-boss';
 exports.describe = 'Get daily boss build';
@@ -61,7 +61,7 @@ const getBuild = (bossName) => {
     case 'reptilian warrior':
       return dailyStandard;
     case 'malachite warrior':
-      return whiteBuster;
+      return whiteout;
     case 'zuulaman':
     case 'phantom miner':
     case 'white claw':
@@ -77,6 +77,8 @@ const printBuild = (build, bossName) => {
   try {
     const embed = new Discord.RichEmbed()
       .setTitle(`${ build.name }`)
+      .setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)' +
+          '\n----------------------------------------------------------------')
       .addField('Daily Challenge Boss', titleCase(bossName), false)
       .addField('Weapons: ', build.weapons, false)
       .addField('Main Hand alternatives: ', build.mainHandAlternatives, false)
@@ -84,9 +86,7 @@ const printBuild = (build, bossName) => {
       .addField('Talents:',
         build.talent1 + ', ' + build.talent2 + ', ' + build.talent3, false)
       .setURL(build.details)
-      .setImage(build.image)
-      .setFooter('Love QL Bot? Check out the about command for more good stuff!',
-        'https://questland-discord-bot.cfapps.io/ql_weasel.png');
+      .setImage(build.image);
 
     return { embed };
   } catch (e) {

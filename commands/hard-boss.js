@@ -32,15 +32,15 @@ const printStats = (level, hardBossStats) => {
   try {
     const embed = new Discord.RichEmbed()
       .setTitle(`Hard Boss Stats`)
+      .setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)' +
+          '\n----------------------------------------------------------------')
       .setURL('https://questland-handbook.cfapps.io/indexes/hard-boss-stats')
       .setThumbnail('https://questland-discord-bot.cfapps.io/spreadsheet.png')
-      .setFooter('Love QL Bot? Check out the about command for more good stuff!',
-        'https://questland-discord-bot.cfapps.io/ql_weasel.png')
       .addField("Level", level)
       .addField("Health", Number(hardBossStats[level].health).toLocaleString())
       .addField("Attack", Number(hardBossStats[level].attack).toLocaleString())
       .addField("Defense", Number(hardBossStats[level].defense).toLocaleString())
-      .addField("Magic", Number(hardBossStats[level].magic).toLocaleString())
+      .addField("Magic", Number(hardBossStats[level].magic).toLocaleString());
 
     return { embed };
   } catch (e) {
