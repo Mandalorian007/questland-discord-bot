@@ -1,9 +1,7 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
 const { asyncHandler } = require("./_helper");
-const { serverMatcher, serverOptions } = require("../helpers/optionHelper");
-const { optionNotFoundMessage, helpMessage } = require("../helpers/messageHelper");
-const { dailyStandard, whiteBuster, intenseSwordWielding, flamingShield } = require("./../data/dailyBuilds");
+const { helpMessage } = require("../helpers/messageHelper");
 
 exports.command = 'monster-slayer';
 exports.describe = 'Get stage scores for Monster Slayer';
@@ -31,17 +29,19 @@ const printScores = (monsterSlayer) => {
   try {
     const embed = new Discord.RichEmbed()
         .setTitle(`Monster Slayer`)
-        .setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)' +
-            '\n----------------------------------------------------------------')
         .setThumbnail('https://questland-discord-bot.cfapps.io/monster-slayer-coffee.png');
     if(monsterSlayer) {
-        var scores = [];
-        for (i = 0; i < 10; i++) {
-            var data = monsterSlayer[i];
-            scores.push(`${data.stageScore} | ${data.locationName} - ${data.stageName} (${data.locationNumber}-${data.stageNumber})`);
+
+        const levelData = [];
+        levelData.push(`Score | Location - Stage`);
+        for (let i = 0; i < 10; i++) {
+            const data = monsterSlayer[i];
+            levelData.push(`${data.stageScore} | ${data.locationName} - ${data.stageName}`);
         }
 
-        embed.setDescription(`Stage Scores \n\`\`\`${scores.join('\n')}\`\`\``)
+        embed.setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)'
+            + '\n----------------------------------------------------------------'
+            + `\n\`\`\`${levelData.join('\n')}\`\`\``);
     } else {
         embed.addField(
         'No active monster slayer quest found',
