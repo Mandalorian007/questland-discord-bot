@@ -38,8 +38,8 @@ const getApiBuildName = (buildName) => {
   switch (buildName) {
     case 'turtle':
       return 'turtle';
-    case 'bloodly hell':
-      return 'bloodly_hell';
+    case 'bloody hell':
+      return 'bloody_hell';
     case 'faerie wrath':
       return 'faerie_wrath';
     case 'shinobi':
@@ -105,7 +105,7 @@ const getHelpMessage = () => {
     .addField('Usage', `!ql build <build options>`, false)
     .addField('Core/ Popular Build Options', [
       '`Turtle`',
-      '`Bloodly Hell`'
+      '`Bloody Hell`'
     ], false)
     .addField('Campaign Favorite Build Options', [
       '`Faerie Wrath`',
