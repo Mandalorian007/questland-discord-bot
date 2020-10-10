@@ -1,0 +1,4 @@
+service: ql-bot
+runtime: nodejs12
+manual_scaling:
+  instances: 1

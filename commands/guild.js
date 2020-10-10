@@ -1,8 +1,10 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
+const { qlApiUrl } = require("../helpers/constants");
 const { asyncHandler } = require("./_helper");
 const { serverMatcher, serverOptions } = require("../helpers/optionHelper");
 const { optionNotFoundMessage, helpMessage } = require("../helpers/messageHelper");
+const { smarten } = require("../helpers/textHelper");
 
 exports.command = 'guild';
 exports.describe = 'Get details about a guild';
@@ -37,7 +39,7 @@ exports.handler = asyncHandler(async (argv) => {
 
   let temp = argv._;
   temp = temp.filter(x => x !== 'guild');
-  const guildName = temp.join(' ');
+  const guildName = smarten(temp.join(' '));
   let server;
   if (serverMatcher(argv.s)) {
     server = argv.s.toUpperCase();
@@ -45,7 +47,7 @@ exports.handler = asyncHandler(async (argv) => {
     return optionNotFoundMessage('s', 'server', argv.s, serverOptions)
   }
 
-  const response = await fetch(`https://questland-public-api.cfapps.io/guild/${ encodeURIComponent(guildName) }?server=${ server }`);
+  const response = await fetch(qlApiUrl + `guild/${ encodeURIComponent(guildName) }?server=${ server }`);
   const guild = response.ok
     ? await response.json()
     : null;

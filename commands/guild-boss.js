@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
+const { qlApiUrl } = require("../helpers/constants");
 const { asyncHandler } = require("./_helper");
 const { helpMessage } = require("../helpers/messageHelper");
 
@@ -22,7 +23,7 @@ exports.handler = asyncHandler(async (argv) => {
     return getHelpMessage();
   }
 
-  const response = await fetch('https://questland-public-api.cfapps.io/guildboss/stats');
+  const response = await fetch(qlApiUrl + 'guildboss/stats');
   const guildBossStats = response.ok ? await response.json() : null;
 
   return printStats(level, guildBossStats);

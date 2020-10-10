@@ -1,8 +1,10 @@
 const fetch = require("node-fetch");
 const Discord = require("discord.js");
-const { asyncHandler } = require("./_helper")
+const { qlApiUrl } = require("../helpers/constants");
+const { asyncHandler } = require("./_helper");
 const { optionNotFoundMessage, multipleResultsFoundMessage, noResultFoundMessage, helpMessage } = require("../helpers/messageHelper");
 const { cacheService } = require("../helpers/cache");
+const { smarten } = require("../helpers/textHelper");
 
 const ttl = 60 * 60; // cache for 1 Hour
 const cache = new cacheService(ttl);
@@ -103,7 +105,7 @@ exports.handler = asyncHandler(async (argv) => {
     level = desiredLevel;
   }
 
-  const url = 'https://questland-public-api.cfapps.io/orbs/name/'
+  const url = qlApiUrl + '/orbs/name/'
     + encodeURIComponent(orbName)
     + param;
   const response = await fetch(url);
@@ -120,7 +122,7 @@ exports.handler = asyncHandler(async (argv) => {
 
 // function for retrieving a list of orb names
 const loadOrbNames = async () => {
-  const orbListUrl = 'https://questland-public-api.cfapps.io/orbs?filterArtifacts=true';
+  const orbListUrl = qlApiUrl + 'orbs?filterArtifacts=true';
   const response = await fetch(orbListUrl);
   const orbJson = await response.json();
   return orbJson.map(orb => orb.name);
@@ -148,16 +150,6 @@ const matchOrbName = async (name) => {
     console.error(e);
     return 'Unable to resolve orb name.';
   }
-};
-
-// Change straight quotes to curly and double hyphens to em-dashes.
-const smarten = (text) => {
-  text = text.replace(/(^|[-\u2014\s(\["])'/g, "$1\u2018");       // opening singles
-  text = text.replace(/'/g, "\u2019");                            // closing singles & apostrophes
-  text = text.replace(/(^|[-\u2014/\[(\u2018\s])"/g, "$1\u201c"); // opening doubles
-  text = text.replace(/"/g, "\u201d");                            // closing doubles
-  text = text.replace(/--/g, "\u2014");                           // em-dashes
-  return text
 };
 
 const scaleOrb = (orb, enhance, level) => {

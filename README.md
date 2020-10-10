@@ -2,11 +2,7 @@
 
 This discord bot is backed by the questland public api 
 
-Future desires:
-- Autocomplete for item & orbs
-
-
-
+## developers
 Running locally requires NPM and Node installed as well as the following dependencies:
 ```
 npm install discord.js
@@ -26,3 +22,6 @@ checked in by default.
 ```
 
 The command to start the bot is: `node questland-bot.js`
+
+### deployment:
+- `gcloud app deploy app.yaml -v 1`

@@ -1,8 +1,10 @@
 const fetch = require("node-fetch");
 const Discord = require("discord.js");
+const { qlApiUrl } = require("../helpers/constants");
 const { asyncHandler } = require("./_helper");
 const { multipleResultsFoundMessage, noResultFoundMessage, helpMessage } = require("../helpers/messageHelper");
 const { cacheService } = require("../helpers/cache");
+const { smarten } = require("../helpers/textHelper");
 
 const ttl = 60 * 60; // cache for 1 Hour
 const cache = new cacheService(ttl);
@@ -82,7 +84,7 @@ exports.handler = asyncHandler(async (argv) => {
     param = `?quality=ARTIFACT${ argv.a }`;
   }
 
-  const url = 'https://questland-public-api.cfapps.io/items/name/'
+  const url = qlApiUrl + 'items/name/'
     + encodeURIComponent(itemName)
     + param;
   const response = await fetch(url);
@@ -91,7 +93,7 @@ exports.handler = asyncHandler(async (argv) => {
 
 // function for retrieving a list of item names
 const loadItemNames = async () => {
-  const itemListUrl = 'https://questland-public-api.cfapps.io/items?filterArtifacts=true';
+  const itemListUrl = qlApiUrl + 'items?filterArtifacts=true';
   const response = await fetch(itemListUrl);
   const itemJson = await response.json();
   return itemJson.map(item => item.name);
@@ -107,7 +109,7 @@ const matchItemName = async (name) => {
     const options = itemNames.filter(i => smarten(i.toLowerCase()).includes(searchName));
 
     if (options.length > 1) {
-      const exactFinder = options.filter(i => smarten(i.toLowerCase()) === searchName)
+      const exactFinder = options.filter(i => smarten(i.toLowerCase()) === searchName);
       if (exactFinder.length === 1) {
         return exactFinder[0];
       }
@@ -119,16 +121,6 @@ const matchItemName = async (name) => {
     console.error(e);
     return 'Unable to resolve item name.';
   }
-};
-
-// Change straight quotes to curly and double hyphens to em-dashes.
-const smarten = (text) => {
-  text = text.replace(/(^|[-\u2014\s(\["])'/g, "$1\u2018");       // opening singles
-  text = text.replace(/'/g, "\u2019");                            // closing singles & apostrophes
-  text = text.replace(/(^|[-\u2014/\[(\u2018\s])"/g, "$1\u201c"); // opening doubles
-  text = text.replace(/"/g, "\u201d");                            // closing doubles
-  text = text.replace(/--/g, "\u2014");                           // em-dashes
-  return text
 };
 
 const printItem = (item) => {

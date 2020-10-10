@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
+const { qlApiUrl } = require("../helpers/constants");
 const { asyncHandler } = require("./_helper");
 
 exports.command = 'build';
@@ -27,7 +28,7 @@ exports.handler = asyncHandler(async (argv) => {
     return getHelpMessage();
   }
 
-  const response = await fetch('https://questland-public-api.cfapps.io/build/' + apiBuildName);
+  const response = await fetch(qlApiUrl + 'build/' + apiBuildName);
   let build = response.ok ? await response.json() : undefined;
 
   return build ? printBuild(build) : getHelpMessage();
@@ -37,14 +38,14 @@ const getApiBuildName = (buildName) => {
   switch (buildName) {
     case 'turtle':
       return 'turtle';
-    case 'hecatombus':
-      return 'hecatombus';
-    case 'pax':
-      return 'the_pax';
+    case 'bloodly hell':
+      return 'bloodly_hell';
+    case 'faerie wrath':
+      return 'faerie_wrath';
     case 'shinobi':
       return 'shinobi';
-    case 'ratchet rush':
-      return 'ratchet_rush';
+    case 'phoenix':
+      return 'phoenix';
     case 'red be':
       return 'red_battle_event';
     case 'blue be':
@@ -104,11 +105,11 @@ const getHelpMessage = () => {
     .addField('Usage', `!ql build <build options>`, false)
     .addField('Core/ Popular Build Options', [
       '`Turtle`',
-      '`Hecatombus`'
+      '`Bloodly Hell`'
     ], false)
     .addField('Campaign Favorite Build Options', [
-      '`Pax`',
-      '`Ratchet Rush`',
+      '`Faerie Wrath`',
+      '`Phoenix`',
       '`Shinobi`'
     ], false)
     .addField('Battle Event Build Options', [

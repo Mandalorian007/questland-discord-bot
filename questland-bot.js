@@ -1,7 +1,18 @@
-const connect = require('connect');
-const serveStatic = require('serve-static');
 const yargs = require('yargs');
 const Discord = require("discord.js");
+const express = require('express');
+
+// GAE needs a web server so we use it to host our static content
+const app = express();
+app.use(express.static('public'));
+app.get('/', (req, res) => {
+  res.status(200).send('Yay QL Discord Bot Webserver is alive!').end();
+});
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+});
+// End of webservcr
 
 const client = new Discord.Client();
 
@@ -19,12 +30,6 @@ const parser = yargs
   .showHelpOnFail(false)
   .showHelpOnFail(true)
   .version(false);
-
-// Host a static file for health checks
-const port = process.env.PORT || 3000;
-connect().use(serveStatic('public')).listen(port, function () {
-  console.log(`Server running on ${ port }...`);
-});
 
 client.on("ready", () => {
   // This event will run if the bot starts, and logs in, successfully.

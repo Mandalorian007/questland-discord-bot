@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
+const { qlApiUrl } = require("../helpers/constants");
 const { asyncHandler } = require("./_helper");
 const { helpMessage } = require("../helpers/messageHelper");
 
@@ -19,7 +20,7 @@ exports.handler = asyncHandler(async (argv) => {
     return getHelpMessage();
   }
 
-  const response = await fetch('https://questland-public-api.cfapps.io/monster-slayer');
+  const response = await fetch(qlApiUrl + 'monster-slayer');
   const monsterSlayer = response.ok ? await response.json().then(data => data.stageScores) : null;
 
   return printScores(monsterSlayer);
@@ -29,7 +30,7 @@ const printScores = (monsterSlayer) => {
   try {
     const embed = new Discord.RichEmbed()
         .setTitle(`Monster Slayer`)
-        .setThumbnail('https://questland-discord-bot.cfapps.io/monster-slayer-coffee.png');
+        .setThumbnail(qlApiUrl + 'monster-slayer-coffee.png');
     if(monsterSlayer) {
 
         const levelData = [];

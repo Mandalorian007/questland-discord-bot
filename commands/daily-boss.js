@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
+const { qlApiUrl } = require("../helpers/constants");
 const { asyncHandler } = require("./_helper");
 const { serverMatcher, serverOptions } = require("../helpers/optionHelper");
 const { optionNotFoundMessage, helpMessage } = require("../helpers/messageHelper");
@@ -40,7 +41,7 @@ exports.handler = asyncHandler(async (argv) => {
       }
     }
 
-    const response = await fetch('https://questland-public-api.cfapps.io/dailyboss/current?server=' + server);
+    const response = await fetch(qlApiUrl + 'dailyboss/current?server=' + server);
     bossName = response.ok ? await response.json().then(boss => boss.name) : `Couldn't find current daily boss`;
   }
 

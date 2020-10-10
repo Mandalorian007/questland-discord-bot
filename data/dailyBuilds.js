@@ -1,7 +1,7 @@
 exports.dailyStandard = {
   name: 'The Daily Standard',
-  weapons: 'Hecatombus, Thunderclap',
-  mainHandAlternatives: 'Red Hoarder: None',
+  weapons: 'Anchor of the Damned, Thunderclap',
+  mainHandAlternatives: 'Red Hoarder: Hecatombus',
   offHandAlternatives: 'Support for Destroyers: Azazel Shield, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
   talent1: 'Sword Wielding',
   talent2: 'Transcendental Tornado',
@@ -12,20 +12,20 @@ exports.dailyStandard = {
 
 exports.whiteout = {
   name: 'Whiteout',
-  weapons: 'Combuster, Flesheater',
-  mainHandAlternatives: 'Cherry On Top: Divine Intervention, Annihilator',
+  weapons: 'Divine Avenger, Flesheater',
+  mainHandAlternatives: 'Cherry On Top: Combuster, Divine Intervention, Annihilator',
   offHandAlternatives: 'Spontaneous Spirits: Iron Bat, Ashes to Ashes Ward',
-  talent1: 'Berserker',
+  talent1: 'Berserker/Bloodlust',
   talent2: 'any',
   talent3: 'Crest Guardian',
   details: 'https://questlandblog.com/sibbs-daily-boss-guide-1/',
-  image: 'https://questlandblog.com/wp-content/uploads/2019/12/b2.png'
+  image: 'https://questland-discord-bot.cfapps.io/whiteout.png'
 };
 
 exports.intenseSwordWielding = {
   name: 'The Intense Sword Wielding',
-  weapons: 'Hecatombus, Thunderclap',
-  mainHandAlternatives: 'Red Hoarder: None',
+  weapons: 'Anchor of the Damned, Thunderclap',
+  mainHandAlternatives: 'Red Hoarder: Hecatombus',
   offHandAlternatives: 'Support for Destroyers: Azazel Shield, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
   talent1: 'Sword Wielding',
   talent2: 'Firebird',

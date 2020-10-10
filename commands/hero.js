@@ -1,8 +1,10 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
+const { qlApiUrl } = require("../helpers/constants");
 const { asyncHandler } = require("./_helper");
 const { serverMatcher, serverOptions } = require("../helpers/optionHelper");
 const { optionNotFoundMessage, helpMessage } = require("../helpers/messageHelper");
+const { smarten } = require("../helpers/textHelper");
 
 exports.command = 'hero';
 exports.describe = 'Get details about a hero';
@@ -44,11 +46,11 @@ exports.handler = asyncHandler(async (argv) => {
 
   let temp = argv._;
   temp = temp.filter(x => x !== 'hero');
-  const heroName = temp.join(' ');
+  const heroName = smarten(temp.join(' '));
   if (!argv.g) {
     return optionNotFoundMessage('g', 'guild', argv.g, [])
   }
-  const guildName = argv.g.join(' ');
+  const guildName = smarten(argv.g.join(' '));
   let server;
   if (serverMatcher(argv.s)) {
     server = argv.s.toUpperCase();
@@ -56,7 +58,7 @@ exports.handler = asyncHandler(async (argv) => {
     return optionNotFoundMessage('s', 'server', argv.s, serverOptions)
   }
 
-  const url = `https://questland-public-api.cfapps.io/hero/${ encodeURIComponent(guildName) }/${ encodeURIComponent(heroName) }?server=${ server }`;
+  const url = qlApiUrl + `hero/${ encodeURIComponent(guildName) }/${ encodeURIComponent(heroName) }?server=${ server }`;
   const response = await fetch(url);
   const hero = response.ok
     ? await response.json()
