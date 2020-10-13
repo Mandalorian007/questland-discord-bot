@@ -105,11 +105,11 @@ const getHelpMessage = () => {
     .addField('Usage', `!ql build <build options>`, false)
     .addField('Core/ Popular Build Options', [
       '`Turtle`',
-      '`Bloody Hell`'
+      '`Bloody Hell` (fka: Hecatombus)'
     ], false)
     .addField('Campaign Favorite Build Options', [
-      '`Faerie Wrath`',
-      '`Phoenix`',
+      '`Faerie Wrath` (fka: The Pax)',
+      '`Phoenix` (fka: Ratchet Rush)',
       '`Shinobi`'
     ], false)
     .addField('Battle Event Build Options', [
