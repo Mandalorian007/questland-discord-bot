@@ -66,8 +66,8 @@ const getHelpMessage = () => {
     richEmbed
         .setTitle('gear-set')
         .setDescription('Get a gear set from ThunderSoap\'s personal collection')
-        .addField('Usage', `!ql gear-set <gear-set>`, false)
-        .addField('Gear Collection Options', [
+        .addField('Usage', `!ql gear-set <gear set option>`, false)
+        .addField('Gear Set Options', [
             '`wind-et` Evernight Troubadour - Wind Warrior Gear Set',
             '`myth-gota` Guardian of the Afterlife - Myth Warrior Gear Set',
             '`noble-lc` Lionheart Crusader - Noble Warrior Gear Set',
