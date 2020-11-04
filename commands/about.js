@@ -1,6 +1,7 @@
 const { asyncHandler } = require("./_helper");
 const Discord = require("discord.js");
 const { helpMessage } = require("../helpers/messageHelper");
+const { qlApiUrl } = require("../helpers/constants");
 
 exports.command = 'about';
 exports.describe = 'Get details about QL Bot';
@@ -35,7 +36,7 @@ exports.handler = asyncHandler(async (argv) => {
     .addField('Add QL Bot to your server','Just have your server admin go to this link: [QL Bot Server Add](https://discordapp.com/oauth2/authorize?client_id=675765765395316740&scope=bot)', false)
     .addField('Other ThunderSoap Community projects',[
       '[ThunderSoap\'s YouTube Questland Guides](https://www.youtube.com/channel/UCLHjCEBoRj-PGCPvmWzQXMQ) - This is a channel for YouTube content to help everyone learn about Questland',
-      '[Questland Handbook](https://questland-handbook.cfapps.io/) - This is a community guide website designed to help everyone learn about Questland',
-      '[Public Questland API](https://questland-public-api.cfapps.io/swagger-ui.html) - This is a public API for Questland that developer can make QL tools with. Please reach out to ThunderSoap before hitting it with anything too crazy :grin:'
+      '[Questland Handbook](https://questland-handbook.com) - This is a community guide website designed to help everyone learn about Questland',
+      `[Public Questland API](${qlApiUrl}swagger-ui.html) - This is a public API for Questland that developer can make QL tools with. Please reach out to ThunderSoap before hitting it with anything too crazy :grin:`
     ], false)
 });
