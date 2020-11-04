@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const { asyncHandler } = require("./_helper");
+const { qlBotUrl } = require("../helpers/constants");
 
 exports.command = 'compensation';
 exports.describe = 'Bob has it... we all need it.';
@@ -15,5 +16,5 @@ exports.builder = (yargs) => {
 exports.handler = asyncHandler(async (argv) => {
   return new Discord.RichEmbed()
     .setTitle('BOB GIMME')
-    .setImage('https://questland-discord-bot.cfapps.io/bobgimme.png');
+    .setImage(`${qlBotUrl}bobgimme.png`);
 });

@@ -127,4 +127,4 @@ const getHelpMessage = () => {
       '`!ql build Turtle` Get details for the Turtle build.'
     ], false);
   return richEmbed;
-}
+};

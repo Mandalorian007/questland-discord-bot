@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
-const { qlApiUrl } = require("../helpers/constants");
+const { qlApiUrl, qlBotUrl } = require("../helpers/constants");
 const { asyncHandler } = require("./_helper");
 const { helpMessage } = require("../helpers/messageHelper");
 
@@ -30,7 +30,7 @@ const printScores = (monsterSlayer) => {
   try {
     const embed = new Discord.RichEmbed()
         .setTitle(`Monster Slayer`)
-        .setThumbnail(qlApiUrl + 'monster-slayer-coffee.png');
+        .setThumbnail(qlBotUrl + 'monster-slayer-coffee.png');
     if(monsterSlayer) {
 
         const levelData = [];
@@ -46,7 +46,7 @@ const printScores = (monsterSlayer) => {
     } else {
         embed.addField(
         'No active monster slayer quest found',
-        'If you would like to calculate the quest manually please visit: [Monster Slayer Calculator](https://questland-handbook.cfapps.io/tools/monster-slayer-calc)',
+        `If you would like to calculate the quest manually please visit: [Monster Slayer Calculator](${qlApiUrl}monster-slayer-calc)`,
         false);
     }
 

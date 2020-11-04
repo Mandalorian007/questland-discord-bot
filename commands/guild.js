@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
-const { qlApiUrl } = require("../helpers/constants");
+const { qlApiUrl, qlBotUrl } = require("../helpers/constants");
 const { asyncHandler } = require("./_helper");
 const { serverMatcher, serverOptions } = require("../helpers/optionHelper");
 const { optionNotFoundMessage, helpMessage } = require("../helpers/messageHelper");
@@ -90,7 +90,7 @@ const printGuild = (guild) => {
         `${ guild.attackResearchLevel }, ${ guild.defenseResearchLevel }, ${ guild.healthResearchLevel }, ${ guild.magicResearchLevel }`,
         false)
       .addField('Officers', officers, false)
-      .setThumbnail('https://questland-discord-bot.cfapps.io/guild.png');
+      .setThumbnail(`${qlBotUrl}guild.png`);
     return { embed };
   } catch (e) {
     console.error(e);

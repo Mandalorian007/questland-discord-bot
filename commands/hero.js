@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
-const { qlApiUrl } = require("../helpers/constants");
+const { qlApiUrl, qlBotUrl } = require("../helpers/constants");
 const { asyncHandler } = require("./_helper");
 const { serverMatcher, serverOptions } = require("../helpers/optionHelper");
 const { optionNotFoundMessage, helpMessage } = require("../helpers/messageHelper");
@@ -86,7 +86,7 @@ const printHero = (hero) => {
       .addField('Hero Power (hp, atk, def, mag)',
         `${ hero.heroPower } (${ hero.health }, ${ hero.attack }, ${ hero.defense }, ${ hero.magic })`,
         false)
-      .setThumbnail('https://questland-discord-bot.cfapps.io/armor.png');
+      .setThumbnail(`${qlBotUrl}armor.png`);
     return { embed };
   } catch (e) {
     console.error(e);

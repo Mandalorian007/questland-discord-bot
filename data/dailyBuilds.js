@@ -1,4 +1,5 @@
-const dailyBossImageUrl = 'https://ql-bot-dot-questland-tools.uc.r.appspot.com/';
+
+const { qlBotUrl } = require("../helpers/constants");
 
 exports.dailyStandard = {
   name: 'The Daily Standard',
@@ -9,7 +10,7 @@ exports.dailyStandard = {
   talent2: 'Transcendental Tornado',
   talent3: 'Crest Guardian',
   details: 'https://questlandblog.com/sibbs-daily-boss-guide-1/',
-  image: dailyBossImageUrl + 'daily-standard.png'
+  image: qlBotUrl + 'daily-standard.png'
 };
 
 exports.whiteout = {
@@ -21,7 +22,7 @@ exports.whiteout = {
   talent2: 'any',
   talent3: 'Crest Guardian',
   details: 'https://questlandblog.com/sibbs-daily-boss-guide-1/',
-  image: dailyBossImageUrl + 'whiteout.png'
+  image: qlBotUrl + 'whiteout.png'
 };
 
 exports.intenseSwordWielding = {
@@ -33,7 +34,7 @@ exports.intenseSwordWielding = {
   talent2: 'Firebird',
   talent3: 'Crest Guardian',
   details: 'https://questlandblog.com/sibbs-daily-boss-guide-2/',
-  image: dailyBossImageUrl + 'intense-sword-wielding.png'
+  image: qlBotUrl + 'intense-sword-wielding.png'
 };
 
 exports.flamingShield = {
@@ -45,5 +46,5 @@ exports.flamingShield = {
   talent2: 'Crystal Chains',
   talent3: 'Elevation',
   details: 'https://questlandblog.com/sibbs-daily-boss-guide-1/',
-  image: dailyBossImageUrl + 'flaming-shield-2.png'
+  image: qlBotUrl + 'flaming-shield-2.png'
 };
