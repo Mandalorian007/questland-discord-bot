@@ -75,7 +75,7 @@ const getHelpMessage = () => {
             '`abyss-dc` Dread Captain - Abyss Warrior Gear Set',
         ], false)
         .addField('Examples', [
-            '`!ql gear-SET myth-gota` Get details for the Guardian of the Afterlife Myth Set Warrior Gear Set.'
+            '`!ql gear-set myth-gota` Get details for the Guardian of the Afterlife Myth Set Warrior Gear Set.'
         ], false);
     return richEmbed;
 };
