@@ -1,25 +1,26 @@
 const Discord = require("discord.js");
+const { qlBotUrl } = require("./constants");
 
 // Discord message "multiple items found"
 exports.multipleResultsFoundMessage = (searchTerm, suggestions) =>
   new Discord.RichEmbed()
     .setTitle(`Multiple results for '${ searchTerm }'`)
     .addField('Did you mean:', `${ suggestions }`)
-    .setThumbnail('https://questland-discord-bot.cfapps.io/sherlock.png');
+    .setThumbnail(`${qlBotUrl}sherlock.png`);
 
 // Discord message "no item results found"
 exports.noResultFoundMessage = (searchTerm, searchCategory) =>
   new Discord.RichEmbed()
     .setTitle(`${ searchCategory } '${ searchTerm }' not found`)
     .addField('Please check your input', '\u200b')
-    .setThumbnail('https://questland-discord-bot.cfapps.io/noidea.png');
+    .setThumbnail(`${qlBotUrl}noidea.png`);
 
 // Discord message "unknown option value"
 exports.optionNotFoundMessage = (option, optionAlias, submitted, allowedValues) => {
   let richEmbed = new Discord.RichEmbed()
     .setTitle(`Unknown option for: ${ option }, ${ optionAlias }`)
     .setDescription('This option needs to be provided to run your command.')
-    .setThumbnail('https://questland-discord-bot.cfapps.io/confused.png');
+    .setThumbnail(`${qlBotUrl}confused.png`);
 
   if(allowedValues.length > 0) {
     richEmbed
@@ -43,4 +44,4 @@ exports.helpMessage = (commandTitle, commandDescription, usage, options, example
   }
   richEmbed.addField('Examples', examples, false);
   return richEmbed;
-}
+};

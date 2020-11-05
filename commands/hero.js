@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
-const { qlApiUrl, qlBotUrl } = require("../helpers/constants");
+const { qlApiUrl, qlBotUrl, qlHandbookUrl } = require("../helpers/constants");
 const { asyncHandler } = require("./_helper");
 const { serverMatcher, serverOptions } = require("../helpers/optionHelper");
 const { optionNotFoundMessage, helpMessage } = require("../helpers/messageHelper");
@@ -76,6 +76,7 @@ const printHero = (hero) => {
   try {
     const embed = new Discord.RichEmbed()
       .setTitle(`${ hero.name } [ ${ hero.server } - ${ hero.guild }]`)
+        .setURL(qlHandbookUrl + 'hero-lookup')
       .setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)' +
           '\n----------------------------------------------------------------')
       .addField('Level', hero.level, false)

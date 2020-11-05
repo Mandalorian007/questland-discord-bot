@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
-const { qlApiUrl, qlBotUrl } = require("../helpers/constants");
+const { qlApiUrl, qlBotUrl, qlHandbookUrl } = require("../helpers/constants");
 const { asyncHandler } = require("./_helper");
 const { serverMatcher, serverOptions } = require("../helpers/optionHelper");
 const { optionNotFoundMessage, helpMessage } = require("../helpers/messageHelper");
@@ -80,7 +80,7 @@ const printGuild = (guild) => {
       .setTitle(`${ guild.name }`)
       .setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)' +
           '\n----------------------------------------------------------------')
-      .setURL('https://questland-handbook.cfapps.io/tools/guild-lookup')
+      .setURL(qlHandbookUrl + 'guild-lookup')
       .addField('Server', guild.server, false)
       .addField('Guild Master', guildMaster, false)
       .addField('Description', guild.description || guild.description.length > 0 ? guild.description : 'no description', false)

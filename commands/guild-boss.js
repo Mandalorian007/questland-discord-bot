@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
-const { qlApiUrl } = require("../helpers/constants");
+const { qlApiUrl, qlBotUrl, qlHandbookUrl } = require("../helpers/constants");
 const { asyncHandler } = require("./_helper");
 const { helpMessage } = require("../helpers/messageHelper");
 
@@ -35,8 +35,8 @@ const printStats = (level, guildBossStats) => {
       .setTitle(`Guild Boss Stats`)
       .setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)' +
           '\n----------------------------------------------------------------')
-      .setURL('https://questland-handbook.cfapps.io/indexes/guild-boss-stats')
-      .setThumbnail('https://questland-discord-bot.cfapps.io/spreadsheet.png')
+      .setURL(qlHandbookUrl + 'indexes/guild-boss-stats')
+      .setThumbnail(qlBotUrl + 'spreadsheet.png')
       .addField("Level", level)
       .addField("Health", Number(guildBossStats[level].health).toLocaleString())
       .addField("Attack", Number(guildBossStats[level].attack).toLocaleString())
