@@ -27,7 +27,7 @@ exports.handler = asyncHandler(async (argv) => {
         return getHelpMessage();
     }
 
-    const response = await fetch(qlApiUrl + 'gear-sets/' + gearSetName);
+    const response = await fetch(qlApiUrl + 'optimized-gear-sets/' + gearSetName);
     let gearSet = response.ok ? await response.json() : undefined;
 
     return gearSet ? printGearSet(gearSet) : getHelpMessage();
