@@ -3,8 +3,8 @@ const fetch = require("node-fetch");
 const {qlApiUrl} = require("../helpers/constants");
 const {asyncHandler} = require("./_helper");
 
-exports.command = 'gear-set';
-exports.describe = 'Get a gear set from ThunderSoap\'s personal collection';
+exports.command = 'gear-template';
+exports.describe = 'Get a gear template from ThunderSoap\'s personal collection';
 exports.builder = (yargs) => {
     return yargs
         .option('h', {
@@ -20,22 +20,22 @@ exports.handler = asyncHandler(async (argv) => {
     }
 
     let temp = argv._;
-    temp = temp.filter(x => x !== 'gear-set');
-    const gearSetName = temp.join(' ').toLowerCase();
+    temp = temp.filter(x => x !== 'gear-template');
+    const gearTemplateName = temp.join(' ').toLowerCase();
 
-    if (!gearCollectionWhitelist.includes(gearSetName)) {
+    if (!gearCollectionWhitelist.includes(gearTemplateName)) {
         return getHelpMessage();
     }
 
-    const response = await fetch(qlApiUrl + 'optimized-gear-sets/' + gearSetName);
-    let gearSet = response.ok ? await response.json() : undefined;
+    const response = await fetch(qlApiUrl + 'optimized-gear-templates/' + gearTemplateName);
+    let gearTemplate = response.ok ? await response.json() : undefined;
 
-    return gearSet ? printGearSet(gearSet) : getHelpMessage();
+    return gearTemplate ? printGearTemplate(gearTemplate) : getHelpMessage();
 });
 
 const gearCollectionWhitelist = ['wind-et', 'myth-gota', 'noble-lc', 'hex-tp', 'abyss-dc'];
 
-const printGearSet = (gearSet) => {
+const printGearTemplate = (gearSet) => {
     try {
         const embed = new Discord.RichEmbed()
             .setTitle(`${gearSet.title}`)
@@ -51,7 +51,7 @@ const printGearSet = (gearSet) => {
         if (gearSet.imageUrl) {
             embed.setImage(gearSet.imageUrl);
         } else {
-            embed.addField('Restricted Access', 'Current gear set information  is limited to Legendary Tier+ patrons on ThunderSoap\'s discord. Once a new set is released, this gear set will be made available to all.', false)
+            embed.addField('Restricted Access', 'Current gear set information  is limited to Legendary Tier+ patrons on ThunderSoap\'s discord. Once a new set is released, this gear template will be made available to all.', false)
         }
 
         return {embed};
@@ -64,18 +64,18 @@ const printGearSet = (gearSet) => {
 const getHelpMessage = () => {
     const richEmbed = new Discord.RichEmbed();
     richEmbed
-        .setTitle('gear-set')
-        .setDescription('Get a gear set from ThunderSoap\'s personal collection')
-        .addField('Usage', `!ql gear-set <gear set option>`, false)
-        .addField('Gear Set Options', [
-            '`wind-et` Evernight Troubadour - Wind Warrior Gear Set',
-            '`myth-gota` Guardian of the Afterlife - Myth Warrior Gear Set',
-            '`noble-lc` Lionheart Crusader - Noble Warrior Gear Set',
-            '`hex-tp` Trickster Prince - Hex Warrior Gear Set',
-            '`abyss-dc` Dread Captain - Abyss Warrior Gear Set',
+        .setTitle('gear-template')
+        .setDescription('Get a gear template from ThunderSoap\'s personal collection')
+        .addField('Usage', `!ql gear-template <gear template option>`, false)
+        .addField('Gear Template Options', [
+            '`wind-et` Evernight Troubadour - Wind Warrior Gear Template',
+            '`myth-gota` Guardian of the Afterlife - Myth Warrior Gear Template',
+            '`noble-lc` Lionheart Crusader - Noble Warrior Gear Template',
+            '`hex-tp` Trickster Prince - Hex Warrior Gear Template',
+            '`abyss-dc` Dread Captain - Abyss Warrior Gear Template',
         ], false)
         .addField('Examples', [
-            '`!ql gear-set myth-gota` Get details for the Guardian of the Afterlife Myth Set Warrior Gear Set.'
+            '`!ql gear-template myth-gota` Get details for the Guardian of the Afterlife Myth Set Warrior Gear Template.'
         ], false);
     return richEmbed;
 };

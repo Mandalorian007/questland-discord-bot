@@ -12,7 +12,7 @@ exports.handler = asyncHandler(async (argv) => {
     .setDescription('For any command just add `-h` or `--help` Ex: ```!ql item --help```')
     .addField(':card_box: Index Data', ['`item`', '`orb`', '`hard-boss`', '`guild-boss`'], true)
     .addField(':flower_playing_cards: Profile Lookups', ['`guild`', '`hero`'], true)
-    .addField(':crossed_swords: Community Builds', ['`build`', '`gear-set`', '`daily-boss`'], true)
+    .addField(':crossed_swords: Community Builds', ['`build`', '`gear-template`', '`daily-boss`'], true)
     .addField(':tools: Community Tools', ['`monster-slayer`'], true)
     .addField(':information_source: Info', ['`about`'], true);
 });
