@@ -33,7 +33,7 @@ exports.handler = asyncHandler(async (argv) => {
     return gearTemplate ? printGearTemplate(gearTemplate) : getHelpMessage();
 });
 
-const gearCollectionWhitelist = ['wind-et', 'myth-gota', 'noble-lc', 'hex-tp', 'abyss-dc'];
+const gearCollectionWhitelist = ['venom-pm', 'wind-et', 'myth-gota', 'noble-lc', 'hex-tp', 'abyss-dc'];
 
 const printGearTemplate = (gearSet) => {
     try {
@@ -68,6 +68,8 @@ const getHelpMessage = () => {
         .setDescription('Get a gear template from ThunderSoap\'s personal collection')
         .addField('Usage', `!ql gear-template <gear template option>`, false)
         .addField('Gear Template Options', [
+            '`ice-st` Sabertooth - Ice Warrior Gear Template',
+            '`venom-pm` Poison Master - Venom Warrior Gear Template',
             '`wind-et` Evernight Troubadour - Wind Warrior Gear Template',
             '`myth-gota` Guardian of the Afterlife - Myth Warrior Gear Template',
             '`noble-lc` Lionheart Crusader - Noble Warrior Gear Template',
