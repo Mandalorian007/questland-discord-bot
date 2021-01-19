@@ -16,8 +16,8 @@ exports.dailyStandard = {
 exports.whiteout = {
   name: 'Whiteout',
   weapons: 'Divine Avenger, BladeSong',
-  mainHandAlternatives: 'Cherry On Top: Flesheater, Combuster, Divine Intervention, Annihilator',
-  offHandAlternatives: 'Spontaneous Spirits: Iron Bat, Ashes to Ashes Ward',
+  mainHandAlternatives: 'Cherry On Top: Combuster, Divine Intervention, Annihilator',
+  offHandAlternatives: 'Spontaneous Spirits: Flesheater, Iron Bat, Ashes to Ashes Ward',
   talent1: 'Berserker/Bloodlust',
   talent2: 'any',
   talent3: 'Crest Guardian',
