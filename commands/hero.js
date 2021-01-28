@@ -76,7 +76,7 @@ const printHero = (hero) => {
   try {
     const embed = new Discord.RichEmbed()
       .setTitle(`${ hero.name } [ ${ hero.server } - ${ hero.guild }]`)
-        .setURL(qlHandbookUrl + 'hero-lookup')
+        .setURL(qlHandbookUrl + `hero-lookup/${hero.server}/${encodeURIComponent(hero.guild)}/${encodeURIComponent(hero.name)}`)
       .setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)' +
           '\n----------------------------------------------------------------')
       .addField('Level', hero.level, false)
