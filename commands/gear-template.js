@@ -33,7 +33,7 @@ exports.handler = asyncHandler(async (argv) => {
     return gearTemplate ? printGearTemplate(gearTemplate) : getHelpMessage();
 });
 
-const gearCollectionWhitelist = ['ice-st', 'venom-pm', 'wind-et', 'myth-gota', 'noble-lc', 'hex-tp', 'abyss-dc'];
+const gearCollectionWhitelist = ['beast-bb', 'ice-st', 'venom-pm', 'wind-et', 'myth-gota', 'noble-lc', 'hex-tp', 'abyss-dc'];
 
 const printGearTemplate = (gearSet) => {
     try {
