@@ -40,7 +40,7 @@ exports.intenseSwordWielding = {
 exports.flamingShield = {
   name: 'The Flaming Shield (SIBB Alternative)',
   weapons: 'Ratchet Hatchet, Thunderclap',
-  mainHandAlternatives: 'Red Blast & Blue Twist: The Last Wish',
+  mainHandAlternatives: 'Red Blast & Blue Twist: Spellsinger, The Last Wish',
   offHandAlternatives: 'Support for Destroyers: Jack o\'Lantern\'s Sting, Azazel Shield, Green Crystal Shield, Nightmare Throne Shield, Bone Driller, Sacrosanctus Ward',
   talent1: 'Inner Fire',
   talent2: 'Crystal Chains',
