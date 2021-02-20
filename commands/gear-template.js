@@ -68,6 +68,7 @@ const getHelpMessage = () => {
         .setDescription('Get a gear template from ThunderSoap\'s personal collection')
         .addField('Usage', `!ql gear-template <gear template option>`, false)
         .addField('Gear Template Options', [
+            '`beast-bb` Beast Brawler - Beast Warrior Gear Template',
             '`ice-st` Sabertooth - Ice Warrior Gear Template',
             '`venom-pm` Poison Master - Venom Warrior Gear Template',
             '`wind-et` Evernight Troubadour - Wind Warrior Gear Template',
