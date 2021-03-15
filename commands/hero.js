@@ -77,7 +77,7 @@ const printHero = (hero) => {
     const embed = new Discord.RichEmbed()
       .setTitle(`${ hero.name } [ ${ hero.server } - ${ hero.guild }]`)
         .setURL(qlHandbookUrl + `hero-lookup/${hero.server}/${encodeURIComponent(hero.guild)}/${encodeURIComponent(hero.name)}`)
-      .setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)' +
+      .setDescription('Unfortunately, the Questland Handbook, QL Bot, and Questland API are all shutting down with the final day being April 1st (this is not a joke). If you are serious about picking up the tooling before then please reach out to ThunderSoap with a pm via the Public Questland discord.' +
           '\n----------------------------------------------------------------')
       .addField('Level', hero.level, false)
       .addField('Days Played', hero.daysPlayed, false)

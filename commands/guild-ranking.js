@@ -69,8 +69,7 @@ const printGuildRanking = (guildRanking, server) => {
       rankedGuilds.push(`${data.rank}${data.rank < 10 ? ' ': ''} | ${data.guildScore.toLocaleString()} | ${data.name}`);
     }
 
-    embed.setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)'
-        + '\n----------------------------------------------------------------'
+    embed.setDescription('Unfortunately, the Questland Handbook, QL Bot, and Questland API are all shutting down with the final day being April 1st (this is not a joke). If you are serious about picking up the tooling before then please reach out to ThunderSoap with a pm via the Public Questland discord.'
         + `\n\`\`\`${rankedGuilds.join('\n')}\`\`\``);
 
 

@@ -33,8 +33,7 @@ const printStats = (level, guildBossStats) => {
   try {
     const embed = new Discord.RichEmbed()
       .setTitle(`Guild Boss Stats`)
-      .setDescription('Love QL Bot? Please consider supporting me on [Patreon](https://www.patreon.com/thundersoap)' +
-          '\n----------------------------------------------------------------')
+      .setDescription('Unfortunately, the Questland Handbook, QL Bot, and Questland API are all shutting down with the final day being April 1st (this is not a joke). If you are serious about picking up the tooling before then please reach out to ThunderSoap with a pm via the Public Questland discord.')
       .setURL(qlHandbookUrl + 'indexes/guild-boss-stats')
       .setThumbnail(qlBotUrl + 'spreadsheet.png')
       .addField("Level", level)
