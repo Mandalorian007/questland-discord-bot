@@ -39,7 +39,7 @@ const printGearTemplate = (gearSet) => {
     try {
         const embed = new Discord.RichEmbed()
             .setTitle(`${gearSet.title}`)
-            .setDescription('Unfortunately, the Questland Handbook, QL Bot, and Questland API are all shutting down with the final day being April 1st (this is not a joke). If you are serious about picking up the tooling before then please reach out to ThunderSoap with a pm via the Public Questland discord.');
+            .setDescription('Important update: Starting in May Gamesture will be taking over the QL Bot, Public API, and Questland Handbook site. I have decided to extend my support through April so that no community member needs to go without for that period of time. Happy Questing!');
 
         if (gearSet.setsUsed) {
             embed.addField('Sets Used:', gearSet.setsUsed, false);
