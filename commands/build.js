@@ -67,7 +67,7 @@ const getApiBuildName = (buildName) => {
 
 const printBuild = (build) => {
   try {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setTitle(`${ build.name }`)
       .setDescription('Important update: Starting in May Gamesture will be taking over the QL Bot, Public API, and Questland Handbook site. I have decided to extend my support through April so that no community member needs to go without for that period of time. Happy Questing!' +
           '\n----------------------------------------------------------------');
@@ -98,7 +98,7 @@ const printBuild = (build) => {
 };
 
 const getHelpMessage = () => {
-  const richEmbed = new Discord.RichEmbed();
+  const richEmbed = new Discord.MessageEmbed();
   richEmbed
     .setTitle('build')
     .setDescription('Used to get the details for common Questland builds')

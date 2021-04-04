@@ -14,7 +14,7 @@ exports.builder = (yargs) => {
 };
 
 exports.handler = asyncHandler(async (argv) => {
-  return new Discord.RichEmbed()
+  return new Discord.MessageEmbed()
     .setTitle('BOB GIMME')
     .setImage(`${qlBotUrl}bobgimme.png`);
 });

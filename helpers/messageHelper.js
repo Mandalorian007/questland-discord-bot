@@ -3,21 +3,21 @@ const { qlBotUrl } = require("./constants");
 
 // Discord message "multiple items found"
 exports.multipleResultsFoundMessage = (searchTerm, suggestions) =>
-  new Discord.RichEmbed()
+  new Discord.MessageEmbed()
     .setTitle(`Multiple results for '${ searchTerm }'`)
     .addField('Did you mean:', `${ suggestions }`)
     .setThumbnail(`${qlBotUrl}sherlock.png`);
 
 // Discord message "no item results found"
 exports.noResultFoundMessage = (searchTerm, searchCategory) =>
-  new Discord.RichEmbed()
+  new Discord.MessageEmbed()
     .setTitle(`${ searchCategory } '${ searchTerm }' not found`)
     .addField('Please check your input', '\u200b')
     .setThumbnail(`${qlBotUrl}noidea.png`);
 
 // Discord message "unknown option value"
 exports.optionNotFoundMessage = (option, optionAlias, submitted, allowedValues) => {
-  let richEmbed = new Discord.RichEmbed()
+  let richEmbed = new Discord.MessageEmbed()
     .setTitle(`Unknown option for: ${ option }, ${ optionAlias }`)
     .setDescription('This option needs to be provided to run your command.')
     .setThumbnail(`${qlBotUrl}confused.png`);
@@ -33,7 +33,7 @@ exports.optionNotFoundMessage = (option, optionAlias, submitted, allowedValues) 
 
 // /Discord message "help command"
 exports.helpMessage = (commandTitle, commandDescription, usage, options, examples) => {
-  const richEmbed = new Discord.RichEmbed();
+  const richEmbed = new Discord.MessageEmbed();
   richEmbed
     .setTitle(commandTitle)
     .setDescription(commandDescription)

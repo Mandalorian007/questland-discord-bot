@@ -7,7 +7,7 @@ exports.builder = {};
 
 exports.handler = asyncHandler(async (argv) => {
   //TODO Community tools like MonsterSlayer stuff could be a section :tools:
-  return new Discord.RichEmbed()
+  return new Discord.MessageEmbed()
     .setTitle('QL Bot command list')
     .setDescription('For any command just add `-h` or `--help` Ex: ```!ql item --help```')
     .addField(':card_box: Index Data', ['`item`', '`orb`', '`hard-boss`', '`guild-boss`'], true)

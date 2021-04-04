@@ -28,7 +28,7 @@ exports.handler = asyncHandler(async (argv) => {
 
 const printScores = (monsterSlayer) => {
   try {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
         .setTitle(`Monster Slayer`)
         .setThumbnail(qlBotUrl + 'monster-slayer-coffee.png');
     if(monsterSlayer) {

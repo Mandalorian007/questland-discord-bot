@@ -186,7 +186,7 @@ const scaleBaseStat = (baseStat, enhance, enhancedPotential, level) => {
 
 const printOrb = (scaledOrb) => {
   try {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setTitle(`${ scaledOrb.name }`)
       .setDescription('Important update: Starting in May Gamesture will be taking over the QL Bot, Public API, and Questland Handbook site. I have decided to extend my support through April so that no community member needs to go without for that period of time. Happy Questing!' +
           '\n----------------------------------------------------------------')

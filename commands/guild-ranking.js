@@ -58,7 +58,7 @@ exports.handler = asyncHandler(async (argv) => {
 const printGuildRanking = (guildRanking, server) => {
   try {
     const serverName = server.charAt(0).toUpperCase() + server.slice(1).toLowerCase();
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
         .setTitle(`${serverName}'s Guild Ranking`)
         .setThumbnail(qlBotUrl + 'guild-ranking.png');
 

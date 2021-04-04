@@ -37,7 +37,7 @@ const gearCollectionWhitelist = ['beast-bb', 'ice-st', 'venom-pm', 'wind-et', 'm
 
 const printGearTemplate = (gearSet) => {
     try {
-        const embed = new Discord.RichEmbed()
+        const embed = new Discord.MessageEmbed()
             .setTitle(`${gearSet.title}`)
             .setDescription('Important update: Starting in May Gamesture will be taking over the QL Bot, Public API, and Questland Handbook site. I have decided to extend my support through April so that no community member needs to go without for that period of time. Happy Questing!');
 
@@ -61,7 +61,7 @@ const printGearTemplate = (gearSet) => {
 };
 
 const getHelpMessage = () => {
-    const richEmbed = new Discord.RichEmbed();
+    const richEmbed = new Discord.MessageEmbed();
     richEmbed
         .setTitle('gear-template')
         .setDescription('Get a gear template from ThunderSoap\'s personal collection')

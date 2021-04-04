@@ -27,7 +27,7 @@ exports.handler = asyncHandler(async (argv) => {
     );
   }
 
-  return new Discord.RichEmbed()
+  return new Discord.MessageEmbed()
     .setTitle('About QL Bot')
     .setDescription('QL Bot is one of many community tools made by ThunderSoap')
     .addField('Bug Reports','If you find any bugs please reach out to ThunderSoap on the [Questland public discord](https://discord.com/invite/questland)', false)

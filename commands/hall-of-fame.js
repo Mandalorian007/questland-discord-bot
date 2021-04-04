@@ -57,7 +57,7 @@ exports.handler = asyncHandler(async (argv) => {
 const printHallOfFame = (hallOfFame, server) => {
   try {
     const serverName = server.charAt(0).toUpperCase() + server.slice(1).toLowerCase();
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
         .setTitle(`${serverName}'s Hall of Fame`)
         .setThumbnail(qlBotUrl + 'hall-of-fame.png');
 

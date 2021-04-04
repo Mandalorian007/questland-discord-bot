@@ -125,7 +125,7 @@ const matchItemName = async (name) => {
 
 const printItem = (item) => {
   try {
-    let embed = new Discord.RichEmbed()
+    let embed = new Discord.MessageEmbed()
       .setTitle(`${ item.name }`)
       .setDescription('Important update: Starting in May Gamesture will be taking over the QL Bot, Public API, and Questland Handbook site. I have decided to extend my support through April so that no community member needs to go without for that period of time. Happy Questing!' +
           '\n----------------------------------------------------------------')
