@@ -69,7 +69,7 @@ const printGuildRanking = (guildRanking, server) => {
       rankedGuilds.push(`${data.rank}${data.rank < 10 ? ' ': ''} | ${data.guildScore.toLocaleString()} | ${data.name}`);
     }
 
-    embed.setDescription('Important update: This project is in maintenance mode only and will be supported by ThunderSoap short term. Community developers who wish to build on this project should check github.'
+    embed.setDescription('Important update: This project is shutting down and will no longer be available after October 31st. All source code for developers to run this project will remain publicly available in GitHub.'
         + `\n\`\`\`${rankedGuilds.join('\n')}\`\`\``);
 
 
